@@ -2,7 +2,7 @@ import React from "react";
 import AbstractDropDownMenu from "./AbstractDropDownMenu";
 import Toolbox from "./Toolbox";
 
-class ItemDropDownMenu extends AbstractDropDownMenu {
+class EffectDropDownMenu extends AbstractDropDownMenu {
   constructor() {
     // Define the onChange behavior for this dropdown
     const onChange = (option: any) => {
@@ -10,14 +10,14 @@ class ItemDropDownMenu extends AbstractDropDownMenu {
     };
 
     // Temporarily pass an empty map
-    super(new Map(), "Select the item", "item-dropdown-menu", onChange);
+    super(new Map(), "Select the effect", "item-dropdown-menu", onChange);
     this.state = {
       optionsMap: new Map(),
     };
   }
 
   componentDidMount() {
-    Toolbox.csvToMap("items.csv", (map) => {
+    Toolbox.csvToMap("effects.csv", (map) => {
       // Set the state and re-initialize AbstractDropDownMenu with the correct map
       this.setState({ optionsMap: map });
       this.optionsMap = map;
@@ -29,4 +29,4 @@ class ItemDropDownMenu extends AbstractDropDownMenu {
   }
 }
 
-export default ItemDropDownMenu;
+export default EffectDropDownMenu;

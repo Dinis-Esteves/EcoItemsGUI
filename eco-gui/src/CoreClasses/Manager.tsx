@@ -1,4 +1,5 @@
 import React from "react";
+import ItemDropDownMenu from "./ItemDropDownMenu";
 
 class Manager {
   // Hold the single instance of the Manager
@@ -15,6 +16,9 @@ class Manager {
       return Manager.instance;
     }
     Manager.instance = this; // Set the instance
+
+    //default template
+    this.addComponent(<ItemDropDownMenu />)
   }
 
   public static getInstance(): Manager {
@@ -49,8 +53,13 @@ class Manager {
   }
 
   public render(): JSX.Element {
-    // Needs implementation
-    return <h1>In Progress</h1>;  
+    return (
+      <div>
+        {this.components.map((component, index) => (
+          <div key={index}>{component}</div> // Render each component with a unique key
+        ))}
+      </div>
+    );
   }
 }
 
