@@ -4,7 +4,7 @@ class Manager {
   // Hold the single instance of the Manager
   private static instance: Manager | null = null;
 
-  private currentLetter: String = 'a';
+  private currentLetter: string = 'a';
   private currentNumber: number = 0;
 
   private components: React.ReactNode[] = new Array(10);
@@ -36,7 +36,7 @@ class Manager {
     // Needs implementation
   }
 
-  public generateId(): String {
+  public generateId(): string {
 
      if (this.currentNumber < 9) {
       this.currentNumber++;
