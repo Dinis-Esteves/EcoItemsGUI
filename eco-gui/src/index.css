@@ -36,19 +36,24 @@
   color: black;
 }
 
-.recipe {
-  width: 15%;
-  color: black;
+.recipe-dropdown-menu {
+  color: black; 
+}
+
+.recipeGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 5px; 
 }
 
 .recipeRow {
   display: flex;
-  flex-wrap: wrap;
+  align-self: center;
   gap: 10px;
-  margin-left: 35%;
-  margin-bottom: 2%;
-  margin-top: 2%;
+  margin-top: .75%;
+  margin-bottom: .75%;
 }
+
 
 /* CSS */
 .generate-button {
@@ -80,7 +85,6 @@
   vertical-align: middle;
   white-space: nowrap;
   width: 20%;
-  margin-left: 40%;
 }
 
 .generate-button:after {

@@ -3,12 +3,13 @@ import AbstractDropDownMenu from "./AbstractDropDownMenu";
 import Toolbox from "./Toolbox";
 
 class ItemDropDownMenu extends AbstractDropDownMenu {
-  constructor(props: any) {
+
+  constructor(props: string) {
     const onChange = (option: any) => {
       super.setValue(option.value);
     };
 
-    super(new Map(), "Select the item", "item-dropdown-menu", onChange, props);
+    super(new Map(), "Select the item", props.className, onChange, props);
     this.state = {
       optionsMap: new Map(), // Initialize state if needed
     };

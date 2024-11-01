@@ -5,7 +5,7 @@ class ItemLoreComponent extends React.Component {
   constructor(props: any) {
     super(props);
     this.state = {
-      inputs: [""],
+      inputs: ["", "", ""],
     };
   }
 

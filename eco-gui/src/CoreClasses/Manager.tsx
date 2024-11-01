@@ -3,6 +3,7 @@ import ItemDropDownMenu from "./ItemDropDownMenu";
 import EffectDropDownMenu from "./EffectDropDownMenu";
 import ItemLoreComponent from "./ItemLoreComponent";
 import Arg from "./Arg";
+import ItemRecipe from "./ItemRecipe";
 
 class Manager {
   // Hold the single instance of the Manager
@@ -21,15 +22,17 @@ class Manager {
     Manager.instance = this; // Set the instance
 
     //default template
-    this.addComponent(<ItemDropDownMenu />);
+    this.addComponent(<ItemDropDownMenu className="item-dropown-menu" />);
     this.addComponent(<Arg type="checkbox" label="Hide Attributes" />);
     this.addComponent(<Arg type="text" label="Item Display Name" />);
     this.addComponent(<Arg type="number" label="Item Effective Durability" />);
     this.addComponent(<Arg type="number" label="Item Base Attack Speed" />);
     this.addComponent(<Arg type="number" label="Item Base Damage" />);
+    this.addComponent(<ItemRecipe />);
     this.addComponent(<Arg type="checkbox" label="Craftable" />);
     this.addComponent(<ItemLoreComponent />);
     this.addComponent(<EffectDropDownMenu />);
+    this.addComponent(<button className="generate-button">Generate YML File</button>)
   }
 
   public static getInstance(): Manager {
@@ -66,7 +69,7 @@ class Manager {
 
   public getValues(): Array<any> {
     for (let i: number = 0; i < this.components.length(); i++) {
-      console.log(this.components[i].getValue())
+      console.log(this.components[i].getValue());
     }
   }
 
