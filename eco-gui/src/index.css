@@ -19,47 +19,20 @@
   margin-left: 20%;
 }
 
-.hide_attributes {
-  margin-left: 46%;
-}
-
-.displayName {
-  margin-left: 39%;
-  width: 20%;
-  background-color: white;
-  color: black;
-}
-.effectiveDurability {
-  color: black;
-  background-color: white;
-  margin-left: 44%;
-}
-
-.baseAttackSpeed {
-  color: black;
-  background-color: white;
-  margin-left: 44%;
-}
-
-.baseDamage {
-  color: black;
-  background-color: white;
-  margin-left: 44%;
-}
-
 .loreBox {
   background-color: white;
   color: black;
   width: 25%;
 }
 
-.lore {
-  margin-left: 40%;
-}
-
 .loreButtons {
   background-color: white;
   margin-left: 3px;
+  color: black;
+}
+
+.arg {
+  background-color: white;
   color: black;
 }
 
@@ -75,10 +48,6 @@
   margin-left: 35%;
   margin-bottom: 2%;
   margin-top: 2%;
-}
-
-.craftable {
-  margin-left: 48%;
 }
 
 /* CSS */

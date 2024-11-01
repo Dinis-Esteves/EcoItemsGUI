@@ -3,30 +3,36 @@ import Manager from "./Manager";
 import Select from "react-select";
 
 abstract class AbstractDropDownMenu extends React.Component {
-  protected optionsMap: Map<string, string>; // Assuming optionsMap is a Map
-  protected id: string = Manager.generateId(); // Assuming id is a string
+  protected optionsMap: Map<string, string>;
+  protected id: string;
   protected placeHolder: string;
   protected className: string;
-  protected onChange: (option: any) => void; // Add onChange type
+  protected onChange: (option: any) => void;
+  protected currentValue: string = '';
 
   constructor(
     optionsMap: Map<string, string>,
     placeHolder: string,
     className: string,
-    onChange: (option: any) => void // Add onChange to constructor
+    onChange: (option: any) => void,
+    props: any
   ) {
-    super({});
-    if (new.target === AbstractDropDownMenu) {
-      throw new TypeError("Cannot instantiate AbstractDropDownMenu directly.");
-    }
-
+    super(props);
+    this.id = Manager.generateId();
     this.optionsMap = optionsMap;
     this.placeHolder = placeHolder;
     this.className = className;
-    this.onChange = onChange; // Assign the onChange handler
+    this.onChange = onChange;
   }
 
-  // Ensure that subclasses implement this method
+  getValue(): string {
+    return this.currentValue;
+  }
+
+  setValue(value: string): void {
+    this.currentValue = value;
+  }
+
   render(): JSX.Element {
     const optionsArray = Array.from(this.optionsMap, ([value, label]) => ({
       value,
@@ -40,7 +46,7 @@ abstract class AbstractDropDownMenu extends React.Component {
         className={this.className}
         id={this.id}
         placeholder={this.placeHolder}
-        onChange={this.onChange} // Use the onChange handler
+        onChange={this.onChange}
       />
     );
   }

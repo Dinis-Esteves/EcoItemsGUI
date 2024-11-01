@@ -3,22 +3,19 @@ import AbstractDropDownMenu from "./AbstractDropDownMenu";
 import Toolbox from "./Toolbox";
 
 class ItemDropDownMenu extends AbstractDropDownMenu {
-  constructor() {
-    // Define the onChange behavior for this dropdown
+  constructor(props: any) {
     const onChange = (option: any) => {
-      console.log("Selected option:", option);
+      super.setValue(option.value);
     };
 
-    // Temporarily pass an empty map
-    super(new Map(), "Select the item", "item-dropdown-menu", onChange);
+    super(new Map(), "Select the item", "item-dropdown-menu", onChange, props);
     this.state = {
-      optionsMap: new Map(),
+      optionsMap: new Map(), // Initialize state if needed
     };
   }
 
   componentDidMount() {
     Toolbox.csvToMap("items.csv", (map) => {
-      // Set the state and re-initialize AbstractDropDownMenu with the correct map
       this.setState({ optionsMap: map });
       this.optionsMap = map;
     });

@@ -3,14 +3,20 @@ import AbstractDropDownMenu from "./AbstractDropDownMenu";
 import Toolbox from "./Toolbox";
 
 class EffectDropDownMenu extends AbstractDropDownMenu {
-  constructor() {
+  constructor(props: any) {
     // Define the onChange behavior for this dropdown
     const onChange = (option: any) => {
-      console.log("Selected option:", option);
+      super.setValue(option.value);
     };
 
     // Temporarily pass an empty map
-    super(new Map(), "Select the effect", "item-dropdown-menu", onChange);
+    super(
+      new Map(),
+      "Select the effect",
+      "item-dropdown-menu",
+      onChange,
+      props
+    );
     this.state = {
       optionsMap: new Map(),
     };
