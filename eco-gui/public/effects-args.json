@@ -64,16 +64,10 @@
     },
     "aoe": {
         "shape": "shape",
-        "radius": "int",
-        "angle": "int",
         "effects": "effect"
     },
     "aoe_blocks": {
         "shape": "shape",
-        "radius": "int",
-        "distance": "int",
-        "pierce_blocks": "boolean",
-        "pierce_entities": "boolean",
         "effects": "effect"
     },
     "armor": {

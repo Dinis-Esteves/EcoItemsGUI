@@ -22,7 +22,7 @@ class Manager {
     Manager.instance = this; // Set the instance
 
     //default template
-    this.addComponent(<ItemDropDownMenu className="item-dropown-menu" />);
+    this.addComponent(<ItemDropDownMenu className="item-dropdown-menu" />);
     this.addComponent(<Arg type="checkbox" label="Hide Attributes" />);
     this.addComponent(<Arg type="text" label="Item Display Name" />);
     this.addComponent(<Arg type="number" label="Item Effective Durability" />);
@@ -32,7 +32,7 @@ class Manager {
     this.addComponent(<Arg type="checkbox" label="Craftable" />);
     this.addComponent(<ItemLoreComponent />);
     this.addComponent(<EffectDropDownMenu />);
-    this.addComponent(<button className="generate-button">Generate YML File</button>)
+    this.addComponent(<button className="generate-button">Generate YML File</button>);
   }
 
   public static getInstance(): Manager {
