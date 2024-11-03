@@ -4,18 +4,34 @@ import Manager from "./Manager";
 
 class ItemRecipe extends React.Component {
   private slots: Array<JSX.Element> = [];
+  private itemRefs: Array<any> = []; // Array para armazenar referências aos ItemDropDownMenu
 
   constructor(props: any) {
     super(props);
     // Adiciona 9 instâncias de ItemDropDownMenu ao array slots
     for (let i = 1; i <= 9; i++) {
-      this.slots.push(
+      const itemDropDown = (
         <ItemDropDownMenu
           key={i}
-          className="recipe-dropdown-menu" 
+          className="recipe-dropdown-menu"
+          ref={(ref: any) => (this.itemRefs[i - 1] = ref)} // Salva a referência do componente
         />
       );
+      this.slots.push(itemDropDown);
     }
+  }
+
+  // Função para gerar a representação YAML dos itens
+  toYML() {
+    return (
+      "\trecipe:\n" +
+      this.itemRefs
+        .map((itemRef) => {
+          const value = itemRef.getValue(); // Get the value from the itemRef
+          return value ? `\t- ${value}` : "\t- ''"; // Check if the value is empty
+        })
+        .join("\n")
+    );
   }
 
   render() {

@@ -58,6 +58,18 @@ class ItemLoreComponent extends React.Component {
     return this.state.inputs;
   };
 
+  // Convert the inputs into YAML format
+  toYML() {
+    return (
+      "\tlore:\n" +
+      this.state.inputs
+        .map((loreLine) => {
+          return loreLine ? `\t- '${loreLine}'` : "\t- ''"; // Check if the loreLine is empty
+        })
+        .join("\n")
+    );
+  }
+
   render() {
     return (
       <div className="lore">
