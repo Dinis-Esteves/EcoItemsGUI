@@ -3,9 +3,9 @@ import AbstractDropDownMenu from "./AbstractDropDownMenu";
 import Toolbox from "./Toolbox";
 import Arg from "./Arg";
 
-import effectsArgs from "../../public/conditions-args.json";
+import effectsArgs from "../../public/filters-args.json";
 
-class ConditionDropDownMenu extends AbstractDropDownMenu {
+class FilterDropDownMenu extends AbstractDropDownMenu {
   constructor(props: any) {
     const onChange = (option: any) => {
       console.log(option);
@@ -13,7 +13,7 @@ class ConditionDropDownMenu extends AbstractDropDownMenu {
 
     super(
       new Map(),
-      "Select the condition",
+      "Select the filter",
       "item-dropdown-menu",
       onChange,
       props
@@ -27,7 +27,7 @@ class ConditionDropDownMenu extends AbstractDropDownMenu {
   }
 
   componentDidMount() {
-    Toolbox.csvToMap("conditions.csv", (map) => {
+    Toolbox.csvToMap("filters.csv", (map) => {
       this.setState({ optionsMap: map });
       this.optionsMap = map;
     });
@@ -56,8 +56,6 @@ class ConditionDropDownMenu extends AbstractDropDownMenu {
           );
         case "boolean":
           return <Arg key={index} ref={ref} type="checkbox" label={key} />;
-        case "condition":
-          return <ConditionDropDownMenu key={index} ref={ref} />;
         default:
           return null; // Handle unknown types
       }
@@ -87,7 +85,7 @@ class ConditionDropDownMenu extends AbstractDropDownMenu {
       .join("\n"); // Join all Arg YML strings with newlines
 
     // Format the output string with tabs
-    return `conditions:\n${"\t".repeat(
+    return `filters:\n${"\t".repeat(
       ident - 1
     )}- args:\n${argsYML}\n${"\t".repeat(ident - 1)}id: ${effectValue}`; // Use \t for indentation
   }
@@ -104,4 +102,4 @@ class ConditionDropDownMenu extends AbstractDropDownMenu {
   }
 }
 
-export default ConditionDropDownMenu;
+export default FilterDropDownMenu;
