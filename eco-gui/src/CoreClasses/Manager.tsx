@@ -6,6 +6,7 @@ import Arg from "./Arg";
 import YAML from 'yaml';
 import ItemRecipe from "./ItemRecipe";
 import { saveAs } from 'file-saver'; // Don't forget to import this
+import ConditionDropDownMenu from "./ConditionDropDownMenu";
 
 class Manager {
   // Hold the single instance of the Manager
@@ -35,6 +36,7 @@ class Manager {
     this.addComponent(<Arg type="checkbox" label="craftable" />);
     this.addComponent(<ItemLoreComponent />);
     this.addComponent(<EffectDropDownMenu />);
+    this.addComponent(<ConditionDropDownMenu />);
     this.addComponent(<button className="generate-button" onClick={() => this.generateYAMLFile()}>Generate YML File</button>);
   }
 
