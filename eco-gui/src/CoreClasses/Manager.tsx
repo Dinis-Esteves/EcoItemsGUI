@@ -9,6 +9,7 @@ import { saveAs } from 'file-saver'; // Don't forget to import this
 import ConditionDropDownMenu from "./ConditionDropDownMenu";
 import FilterDropDownMenu from "./FilterDropDownMenu";
 import MutatorDropDownMenu from "./MutatorDropDownMenu";
+import AddElementsBoard from "./AddElementsBoard";
 
 class Manager {
   // Hold the single instance of the Manager
@@ -41,6 +42,7 @@ class Manager {
     this.addComponent(<ConditionDropDownMenu />);
     this.addComponent(<FilterDropDownMenu />);
     this.addComponent(<MutatorDropDownMenu />);
+    this.addComponent(<AddElementsBoard/>);
     this.addComponent(<button className="generate-button" onClick={() => this.generateYAMLFile()}>Generate YML File</button>);
   }
 
@@ -51,7 +53,7 @@ class Manager {
     return Manager.instance;
   }
 
-  public addComponent(component: React.ReactNode): void {
+  addComponent(component: React.ReactNode): void {
     this.components.push(component);
     // If the component is a valid React element, store its ref
     if (React.isValidElement(component) && typeof component.type === 'function') {
