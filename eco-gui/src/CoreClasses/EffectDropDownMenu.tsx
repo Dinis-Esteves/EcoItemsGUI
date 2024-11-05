@@ -91,14 +91,14 @@ class EffectDropDownMenu extends AbstractDropDownMenu {
       .join("\n"); // Join all Arg YML strings with newlines
 
     // Format the output string with tabs
-    return `effects:\n${"\t".repeat(
+    return `\n${"\t".repeat(ident - 1)}- args:\n${argsYML}\n${"\t".repeat(
       ident - 1
-    )}- args:\n${argsYML}\n${"\t".repeat(ident - 1)}id: ${effectValue}`; // Use \t for indentation
+    )}id: ${effectValue}`; // Use \t for indentation
   }
 
   render(): JSX.Element {
     return (
-      <div>
+      <div className="effect-div">
         {super.render()}
 
         {/* Render all Arg components stored in state */}
