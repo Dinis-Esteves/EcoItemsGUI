@@ -49,6 +49,8 @@ class Manager {
     const componentWithRef = React.cloneElement(component, { ref });
     this.components.push(componentWithRef);
     this.componentRefs.push(ref);
+
+    console.log(this.componentRefs);
   }
 
   public getComponents(): React.ReactNode[] {
@@ -106,7 +108,7 @@ class Manager {
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = url;
-    link.download = "components.yml";
+    link.download = "item_config.yml";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);

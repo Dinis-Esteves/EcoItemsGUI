@@ -94,7 +94,7 @@ class ConditionDropDownMenu extends AbstractDropDownMenu {
 
   render(): JSX.Element {
     return (
-      <div>
+      <div className="effect-div">
         {super.render()}
 
         {/* Render all Arg components stored in state */}
