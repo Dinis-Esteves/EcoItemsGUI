@@ -26,7 +26,7 @@ class Manager {
     this.addComponent(<Arg type="number" label="effective Durability" />);
     this.addComponent(<Arg type="number" label="base Attack Speed" />);
     this.addComponent(<Arg type="number" label="base Damage" />);
-    this.addComponent(<ItemDropDownMenu className="item-dropdown-menu"/>);
+    this.addComponent(<ItemDropDownMenu className="item-dropdown-menu" />);
     this.addComponent(<Arg type="checkbox" label="Hide Attributes" />);
     this.addComponent(<Arg type="text" label="display Name" />);
     this.addComponent(<ItemRecipe />);

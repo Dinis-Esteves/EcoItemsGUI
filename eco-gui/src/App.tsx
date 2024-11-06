@@ -1,18 +1,21 @@
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Manager from "./CoreClasses/Manager";
 import "./App.css";
 import ConditionDropDownMenu from "./CoreClasses/Dropdowns/ConditionDropDownMenu";
 import FilterDropDownMenu from "./CoreClasses/Dropdowns/FilterDropDownMenu";
 import MutatorDropDownMenu from "./CoreClasses/Dropdowns/MutatorDropDownMenu";
 import EffectDropDownMenu from "./CoreClasses/Dropdowns/EffectDropDownMenu";
+import AddButton from "./CoreClasses/AddButton";
 
 function App() {
   const [components, setComponents] = useState(Manager.getComponents());
 
-  const handleAddComponent = (component) => {
-    Manager.addComponent(component);
-    setComponents([...Manager.getComponents()]); // Update state to trigger re-render
-  };
+  useEffect(() => {
+    const updateComponents = () => setComponents([...Manager.getComponents()]);
+    window.addEventListener("updateComponents", updateComponents);
+    return () =>
+      window.removeEventListener("updateComponents", updateComponents);
+  }, []);
 
   const handleGenerateYAML = () => {
     Manager.generateYAMLFile();
@@ -21,36 +24,18 @@ function App() {
   return (
     <div>
       {components.map((component, index) => (
-        <div key={index}>{component}</div> // Render each component with a unique key
+        <div key={index}>{component}</div>
       ))}
       <div>
-        <button
-          onClick={() => handleAddComponent(<EffectDropDownMenu />)}
-          className="addButton"
-        >
-          Add Effect
-        </button>
-        <button
-          onClick={() => handleAddComponent(<MutatorDropDownMenu />)}
-          className="addButton"
-        >
-          Add Mutator
-        </button>
-        <button
-          onClick={() => handleAddComponent(<FilterDropDownMenu />)}
-          className="addButton"
-        >
-          Add Filter
-        </button>
-        <button
-          onClick={() => handleAddComponent(<ConditionDropDownMenu />)}
-          className="addButton"
-        >
-          Add Condition
-        </button>
+        <AddButton component={<EffectDropDownMenu />} />
+        <AddButton component={<MutatorDropDownMenu />} />
+        <AddButton component={<FilterDropDownMenu />} />
+        <AddButton component={<ConditionDropDownMenu />} />
       </div>
       <div>
-        <button onClick={handleGenerateYAML} className="generate-button">Generate YML File</button>
+        <button onClick={handleGenerateYAML} className="generate-button">
+          Generate YML File
+        </button>
       </div>
     </div>
   );
