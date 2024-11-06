@@ -1,13 +1,11 @@
 import React from "react";
 import AbstractDropDownMenu from "./AbstractDropDownMenu";
-import Toolbox from "./Toolbox";
-import Arg from "./Arg";
+import Toolbox from "../Toolbox";
+import Arg from "../Arg";
 
-// Assume effects-args.json is imported or fetched here
-import effectsArgs from "../../public/effects-args.json";
-import ShapeDropDownMenu from "./ShapeDropDownMenu";
+import effectsArgs from "../../assets/conditions-args.json";
 
-class EffectDropDownMenu extends AbstractDropDownMenu {
+class ConditionDropDownMenu extends AbstractDropDownMenu {
   constructor(props: any) {
     const onChange = (option: any) => {
       console.log(option);
@@ -15,7 +13,7 @@ class EffectDropDownMenu extends AbstractDropDownMenu {
 
     super(
       new Map(),
-      "Select the effect",
+      "Select the condition",
       "item-dropdown-menu",
       onChange,
       props
@@ -29,7 +27,7 @@ class EffectDropDownMenu extends AbstractDropDownMenu {
   }
 
   componentDidMount() {
-    Toolbox.csvToMap("effects.csv", (map) => {
+    Toolbox.csvToMap("conditions.csv", (map) => {
       this.setState({ optionsMap: map });
       this.optionsMap = map;
     });
@@ -58,10 +56,8 @@ class EffectDropDownMenu extends AbstractDropDownMenu {
           );
         case "boolean":
           return <Arg key={index} ref={ref} type="checkbox" label={key} />;
-        case "effect":
-          return <EffectDropDownMenu key={index} ref={ref} />;
-        case "shape":
-          return <ShapeDropDownMenu key={index} ref={ref} />;
+        case "condition":
+          return <ConditionDropDownMenu key={index} ref={ref} />;
         default:
           return null; // Handle unknown types
       }
@@ -108,4 +104,4 @@ class EffectDropDownMenu extends AbstractDropDownMenu {
   }
 }
 
-export default EffectDropDownMenu;
+export default ConditionDropDownMenu;

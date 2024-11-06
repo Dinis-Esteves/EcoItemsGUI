@@ -1,5 +1,5 @@
 import React from "react";
-import ItemDropDownMenu from "./ItemDropDownMenu";
+import ItemDropDownMenu from "./Dropdowns/ItemDropDownMenu";
 import Manager from "./Manager";
 
 class ItemRecipe extends React.Component {

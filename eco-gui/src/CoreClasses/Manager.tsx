@@ -1,14 +1,12 @@
 import React from "react";
-import ItemDropDownMenu from "./ItemDropDownMenu";
-import EffectDropDownMenu from "./EffectDropDownMenu";
+import ItemDropDownMenu from "./Dropdowns/ItemDropDownMenu";
+import EffectDropDownMenu from "./Dropdowns/EffectDropDownMenu";
 import ItemLoreComponent from "./ItemLoreComponent";
 import Arg from "./Arg";
-import YAML from "yaml";
 import ItemRecipe from "./ItemRecipe";
-import { saveAs } from "file-saver";
-import ConditionDropDownMenu from "./ConditionDropDownMenu";
-import FilterDropDownMenu from "./FilterDropDownMenu";
-import MutatorDropDownMenu from "./MutatorDropDownMenu";
+import ConditionDropDownMenu from "./Dropdowns/ConditionDropDownMenu";
+import FilterDropDownMenu from "./Dropdowns/FilterDropDownMenu";
+import MutatorDropDownMenu from "./Dropdowns/MutatorDropDownMenu";
 
 class Manager {
   private static instance: Manager | null = null;
@@ -49,8 +47,6 @@ class Manager {
     const componentWithRef = React.cloneElement(component, { ref });
     this.components.push(componentWithRef);
     this.componentRefs.push(ref);
-
-    console.log(this.componentRefs);
   }
 
   public getComponents(): React.ReactNode[] {

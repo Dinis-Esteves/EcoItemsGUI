@@ -1,5 +1,5 @@
 import React from "react";
-import Manager from "./Manager";
+import Manager from "../Manager";
 import Select from "react-select";
 
 abstract class AbstractDropDownMenu extends React.Component {

@@ -1,7 +1,7 @@
 import React from "react";
 import AbstractDropDownMenu from "./AbstractDropDownMenu";
-import Toolbox from "./Toolbox";
-import Manager from "./Manager";
+import Toolbox from "../Toolbox";
+import Manager from "../Manager";
 
 interface ItemDropDownMenuState {
   optionsMap: Map<string, string>;

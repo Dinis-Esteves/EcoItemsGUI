@@ -1,11 +1,11 @@
 import React from "react";
 import AbstractDropDownMenu from "./AbstractDropDownMenu";
-import Toolbox from "./Toolbox";
-import Arg from "./Arg";
+import Toolbox from "../Toolbox";
+import Arg from "../Arg";
 
-import effectsArgs from "../../public/conditions-args.json";
+import effectsArgs from "../../assets/mutators-args.json";
 
-class ConditionDropDownMenu extends AbstractDropDownMenu {
+class MutatorDropDownMenu extends AbstractDropDownMenu {
   constructor(props: any) {
     const onChange = (option: any) => {
       console.log(option);
@@ -13,7 +13,7 @@ class ConditionDropDownMenu extends AbstractDropDownMenu {
 
     super(
       new Map(),
-      "Select the condition",
+      "Select the mutator",
       "item-dropdown-menu",
       onChange,
       props
@@ -27,7 +27,7 @@ class ConditionDropDownMenu extends AbstractDropDownMenu {
   }
 
   componentDidMount() {
-    Toolbox.csvToMap("conditions.csv", (map) => {
+    Toolbox.csvToMap("mutators.csv", (map) => {
       this.setState({ optionsMap: map });
       this.optionsMap = map;
     });
@@ -54,10 +54,6 @@ class ConditionDropDownMenu extends AbstractDropDownMenu {
           return (
             <Arg key={index} ref={ref} type="number" label={key} step="0.1" />
           );
-        case "boolean":
-          return <Arg key={index} ref={ref} type="checkbox" label={key} />;
-        case "condition":
-          return <ConditionDropDownMenu key={index} ref={ref} />;
         default:
           return null; // Handle unknown types
       }
@@ -104,4 +100,4 @@ class ConditionDropDownMenu extends AbstractDropDownMenu {
   }
 }
 
-export default ConditionDropDownMenu;
+export default MutatorDropDownMenu;

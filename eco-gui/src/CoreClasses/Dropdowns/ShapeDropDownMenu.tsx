@@ -1,6 +1,6 @@
 import React from "react";
 import AbstractDropDownMenu from "./AbstractDropDownMenu";
-import Arg from "./Arg";
+import Arg from "../Arg";
 
 class ShapeDropDownMenu extends AbstractDropDownMenu {
   private selectedKey: string = ""; // Store the key of the selected shape

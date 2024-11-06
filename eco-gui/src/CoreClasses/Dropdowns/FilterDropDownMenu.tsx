@@ -1,11 +1,11 @@
 import React from "react";
 import AbstractDropDownMenu from "./AbstractDropDownMenu";
-import Toolbox from "./Toolbox";
-import Arg from "./Arg";
+import Toolbox from "../Toolbox";
+import Arg from "../Arg";
 
-import effectsArgs from "../../public/mutators-args.json";
+import effectsArgs from "../../assets/filters-args.json";
 
-class MutatorDropDownMenu extends AbstractDropDownMenu {
+class FilterDropDownMenu extends AbstractDropDownMenu {
   constructor(props: any) {
     const onChange = (option: any) => {
       console.log(option);
@@ -13,7 +13,7 @@ class MutatorDropDownMenu extends AbstractDropDownMenu {
 
     super(
       new Map(),
-      "Select the mutator",
+      "Select the filter",
       "item-dropdown-menu",
       onChange,
       props
@@ -27,7 +27,7 @@ class MutatorDropDownMenu extends AbstractDropDownMenu {
   }
 
   componentDidMount() {
-    Toolbox.csvToMap("mutators.csv", (map) => {
+    Toolbox.csvToMap("filters.csv", (map) => {
       this.setState({ optionsMap: map });
       this.optionsMap = map;
     });
@@ -54,6 +54,8 @@ class MutatorDropDownMenu extends AbstractDropDownMenu {
           return (
             <Arg key={index} ref={ref} type="number" label={key} step="0.1" />
           );
+        case "boolean":
+          return <Arg key={index} ref={ref} type="checkbox" label={key} />;
         default:
           return null; // Handle unknown types
       }
@@ -100,4 +102,4 @@ class MutatorDropDownMenu extends AbstractDropDownMenu {
   }
 }
 
-export default MutatorDropDownMenu;
+export default FilterDropDownMenu;

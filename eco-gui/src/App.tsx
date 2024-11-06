@@ -1,10 +1,10 @@
 import { useState } from "react";
 import Manager from "./CoreClasses/Manager";
 import "./App.css";
-import ConditionDropDownMenu from "./CoreClasses/ConditionDropDownMenu";
-import FilterDropDownMenu from "./CoreClasses/FilterDropDownMenu";
-import MutatorDropDownMenu from "./CoreClasses/MutatorDropDownMenu";
-import EffectDropDownMenu from "./CoreClasses/EffectDropDownMenu";
+import ConditionDropDownMenu from "./CoreClasses/Dropdowns/ConditionDropDownMenu";
+import FilterDropDownMenu from "./CoreClasses/Dropdowns/FilterDropDownMenu";
+import MutatorDropDownMenu from "./CoreClasses/Dropdowns/MutatorDropDownMenu";
+import EffectDropDownMenu from "./CoreClasses/Dropdowns/EffectDropDownMenu";
 
 function App() {
   const [components, setComponents] = useState(Manager.getComponents());

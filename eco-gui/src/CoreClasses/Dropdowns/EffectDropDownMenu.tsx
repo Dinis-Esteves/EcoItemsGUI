@@ -1,11 +1,13 @@
 import React from "react";
 import AbstractDropDownMenu from "./AbstractDropDownMenu";
-import Toolbox from "./Toolbox";
-import Arg from "./Arg";
+import Toolbox from "../Toolbox";
+import Arg from "../Arg";
 
-import effectsArgs from "../../public/filters-args.json";
+// Assume effects-args.json is imported or fetched here
+import effectsArgs from "../../assets/effects-args.json";
+import ShapeDropDownMenu from "./ShapeDropDownMenu";
 
-class FilterDropDownMenu extends AbstractDropDownMenu {
+class EffectDropDownMenu extends AbstractDropDownMenu {
   constructor(props: any) {
     const onChange = (option: any) => {
       console.log(option);
@@ -13,7 +15,7 @@ class FilterDropDownMenu extends AbstractDropDownMenu {
 
     super(
       new Map(),
-      "Select the filter",
+      "Select the effect",
       "item-dropdown-menu",
       onChange,
       props
@@ -27,7 +29,7 @@ class FilterDropDownMenu extends AbstractDropDownMenu {
   }
 
   componentDidMount() {
-    Toolbox.csvToMap("filters.csv", (map) => {
+    Toolbox.csvToMap("effects.csv", (map) => {
       this.setState({ optionsMap: map });
       this.optionsMap = map;
     });
@@ -56,6 +58,10 @@ class FilterDropDownMenu extends AbstractDropDownMenu {
           );
         case "boolean":
           return <Arg key={index} ref={ref} type="checkbox" label={key} />;
+        case "effect":
+          return <EffectDropDownMenu key={index} ref={ref} />;
+        case "shape":
+          return <ShapeDropDownMenu key={index} ref={ref} />;
         default:
           return null; // Handle unknown types
       }
@@ -102,4 +108,4 @@ class FilterDropDownMenu extends AbstractDropDownMenu {
   }
 }
 
-export default FilterDropDownMenu;
+export default EffectDropDownMenu;
