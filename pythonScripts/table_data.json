@@ -1,0 +1,341 @@
+[
+    {
+        "column1": "alt_click"
+    },
+    {
+        "column1": "bite"
+    },
+    {
+        "column1": "block_item_drop"
+    },
+    {
+        "column1": "bow_attack"
+    },
+    {
+        "column1": "breed"
+    },
+    {
+        "column1": "brew"
+    },
+    {
+        "column1": "brew_ingredient"
+    },
+    {
+        "column1": "buy_item"
+    },
+    {
+        "column1": "cast_rod"
+    },
+    {
+        "column1": "catch_entity"
+    },
+    {
+        "column1": "catch_fish"
+    },
+    {
+        "column1": "catch_fish_fail"
+    },
+    {
+        "column1": "change_armor"
+    },
+    {
+        "column1": "change_world"
+    },
+    {
+        "column1": "click_block"
+    },
+    {
+        "column1": "click_entity"
+    },
+    {
+        "column1": "collect_envoy"
+    },
+    {
+        "column1": "complete_advancement"
+    },
+    {
+        "column1": "complete_quest"
+    },
+    {
+        "column1": "complete_task"
+    },
+    {
+        "column1": "consume"
+    },
+    {
+        "column1": "craft"
+    },
+    {
+        "column1": "damage_item"
+    },
+    {
+        "column1": "death"
+    },
+    {
+        "column1": "disable"
+    },
+    {
+        "column1": "drop_item"
+    },
+    {
+        "column1": "empty_bucket"
+    },
+    {
+        "column1": "enable"
+    },
+    {
+        "column1": "enchant_<type>"
+    },
+    {
+        "column1": "enchant_item"
+    },
+    {
+        "column1": "enter_bed"
+    },
+    {
+        "column1": "enter_region"
+    },
+    {
+        "column1": "entity_break_door"
+    },
+    {
+        "column1": "entity_catch_fire_from_block"
+    },
+    {
+        "column1": "entity_catch_fire_from_entity"
+    },
+    {
+        "column1": "entity_damage"
+    },
+    {
+        "column1": "entity_damage_by_entity"
+    },
+    {
+        "column1": "entity_death"
+    },
+    {
+        "column1": "entity_item_drop"
+    },
+    {
+        "column1": "entity_spawn"
+    },
+    {
+        "column1": "entity_target"
+    },
+    {
+        "column1": "entity_teleport"
+    },
+    {
+        "column1": "fall_damage"
+    },
+    {
+        "column1": "fill_bucket"
+    },
+    {
+        "column1": "gain_hunger"
+    },
+    {
+        "column1": "gain_job_xp"
+    },
+    {
+        "column1": "gain_pet_xp"
+    },
+    {
+        "column1": "gain_skill_xp"
+    },
+    {
+        "column1": "gain_task_xp"
+    },
+    {
+        "column1": "gain_xp"
+    },
+    {
+        "column1": "global_static_%interval%"
+    },
+    {
+        "column1": "headshot"
+    },
+    {
+        "column1": "heal"
+    },
+    {
+        "column1": "hold_item"
+    },
+    {
+        "column1": "hook_in_ground"
+    },
+    {
+        "column1": "inscribe"
+    },
+    {
+        "column1": "item_break"
+    },
+    {
+        "column1": "jobs_level_up"
+    },
+    {
+        "column1": "join"
+    },
+    {
+        "column1": "join_job"
+    },
+    {
+        "column1": "jump"
+    },
+    {
+        "column1": "kill"
+    },
+    {
+        "column1": "leave"
+    },
+    {
+        "column1": "leave_bed"
+    },
+    {
+        "column1": "leave_job"
+    },
+    {
+        "column1": "leave_region"
+    },
+    {
+        "column1": "left_click_npc"
+    },
+    {
+        "column1": "level_up_item"
+    },
+    {
+        "column1": "level_up_job"
+    },
+    {
+        "column1": "level_up_pet"
+    },
+    {
+        "column1": "level_up_skill"
+    },
+    {
+        "column1": "level_up_xp"
+    },
+    {
+        "column1": "lose_hunger"
+    },
+    {
+        "column1": "lose_potion_effect"
+    },
+    {
+        "column1": "melee_attack"
+    },
+    {
+        "column1": "mine_block"
+    },
+    {
+        "column1": "mine_block_progress"
+    },
+    {
+        "column1": "move"
+    },
+    {
+        "column1": "pick_up_item"
+    },
+    {
+        "column1": "place_block"
+    },
+    {
+        "column1": "potion_effect"
+    },
+    {
+        "column1": "projectile_hit"
+    },
+    {
+        "column1": "projectile_launch"
+    },
+    {
+        "column1": "reel_in"
+    },
+    {
+        "column1": "regen_magic"
+    },
+    {
+        "column1": "register_vote"
+    },
+    {
+        "column1": "respawn"
+    },
+    {
+        "column1": "right_click_npc"
+    },
+    {
+        "column1": "run_command"
+    },
+    {
+        "column1": "scyther_auto_collect"
+    },
+    {
+        "column1": "scyther_auto_sell"
+    },
+    {
+        "column1": "sell_item"
+    },
+    {
+        "column1": "send_message"
+    },
+    {
+        "column1": "shear_entity"
+    },
+    {
+        "column1": "shield_block"
+    },
+    {
+        "column1": "shoot_bow"
+    },
+    {
+        "column1": "smelt"
+    },
+    {
+        "column1": "smith_item"
+    },
+    {
+        "column1": "start_quest"
+    },
+    {
+        "column1": "static_%interval%"
+    },
+    {
+        "column1": "swap_hands"
+    },
+    {
+        "column1": "swing"
+    },
+    {
+        "column1": "take_damage"
+    },
+    {
+        "column1": "take_entity_damage"
+    },
+    {
+        "column1": "tame_animal"
+    },
+    {
+        "column1": "teleport"
+    },
+    {
+        "column1": "toggle_flight"
+    },
+    {
+        "column1": "toggle_sneak"
+    },
+    {
+        "column1": "toggle_sprint"
+    },
+    {
+        "column1": "trident_attack"
+    },
+    {
+        "column1": "try_inscribe"
+    },
+    {
+        "column1": "villager_trade"
+    },
+    {
+        "column1": "win_raid"
+    }
+]
