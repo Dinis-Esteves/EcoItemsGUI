@@ -4,6 +4,7 @@ import Toolbox from "../Toolbox";
 import Arg from "../Arg";
 
 import effectsArgs from "../../assets/conditions-args.json";
+import AddButton from "../AddButton";
 
 class ConditionDropDownMenu extends AbstractDropDownMenu {
   constructor(props: any) {
@@ -23,6 +24,7 @@ class ConditionDropDownMenu extends AbstractDropDownMenu {
       optionsMap: new Map(),
       Args: [], // Initialize state to hold Arg components
       argRefs: [], // Store refs for Arg components
+      hasConditionArgs: false,
     };
   }
 
@@ -32,6 +34,20 @@ class ConditionDropDownMenu extends AbstractDropDownMenu {
       this.optionsMap = map;
     });
   }
+
+  addComponentToArgs = (ComponentType) => {
+    const newComponentRef = React.createRef(); // Create a new ref for the new component
+
+    // Create an instance of the component and pass the ref to it
+    const newComponent = (
+      <ComponentType key={this.state.Args.length} ref={newComponentRef} />
+    );
+
+    this.setState((prevState) => ({
+      Args: [...prevState.Args, newComponent],
+      argRefs: [...prevState.argRefs, newComponentRef],
+    }));
+  };
 
   // Function to generate Arg components from JSON data
   generateArgsComponents(effectName: string) {
@@ -57,6 +73,7 @@ class ConditionDropDownMenu extends AbstractDropDownMenu {
         case "boolean":
           return <Arg key={index} ref={ref} type="checkbox" label={key} />;
         case "condition":
+          this.state.hasConditionArgs = true;
           return <ConditionDropDownMenu key={index} ref={ref} />;
         default:
           return null; // Handle unknown types
@@ -77,19 +94,37 @@ class ConditionDropDownMenu extends AbstractDropDownMenu {
   };
 
   toYML(ident: number = 0): string {
-    ident += 1; // Increment ident for indentation
-    const effectValue = this.getValue(); // Get the effect value
-    const argsYML = this.state.argRefs
-      .map((ref) =>
-        ref.current ? `${"\t".repeat(ident)}${ref.current.toYML(ident)}` : null
-      ) // Prefix each Arg YML with tabs
-      .filter(Boolean) // Filter out null values
-      .join("\n"); // Join all Arg YML strings with newlines
+    ident += 1;
 
-    // Format the output string with tabs
-    return `\n${"\t".repeat(ident - 1)}- args:\n${argsYML}\n${"\t".repeat(
-      ident - 1
-    )}id: ${effectValue}\n`; // Use \t for indentation
+    const conditionId = this.getValue();
+    let conditionsYAML: string[] = [];
+    let miscellaneousYAML: string[] = [];
+
+    // Process each argument reference to generate YAML
+    this.state.argRefs.forEach((ref) => {
+      if (ref.current) {
+        const yamlString = ref.current.toYML(ident);
+        if (yamlString.trim() !== "") {
+          if (ref.current instanceof ConditionDropDownMenu) {
+            conditionsYAML.push(`${"\t".repeat(ident + 1)}${yamlString}`);
+          } else {
+            miscellaneousYAML.push(`${"\t".repeat(ident)}${yamlString}`);
+          }
+        }
+      }
+    });
+
+    // Construct the main YAML structure
+    return [
+      `\n${"\t".repeat(ident - 1)}- args:`,
+      conditionsYAML.length
+        ? `${"\t".repeat(ident)}conditions:\n${conditionsYAML.join("\n")}`
+        : "",
+      miscellaneousYAML.join("\n"),
+      `${"\t".repeat(ident - 1)}- id: ${conditionId}`,
+    ]
+      .filter(Boolean)
+      .join("\n");
   }
 
   render(): JSX.Element {
@@ -99,6 +134,14 @@ class ConditionDropDownMenu extends AbstractDropDownMenu {
 
         {/* Render all Arg components stored in state */}
         <div className="args-container">{this.state.Args}</div>
+
+        {/* Render AddButton only if the effect has arguments */}
+        {this.state.hasConditionArgs && (
+          <AddButton
+            component={<ConditionDropDownMenu />}
+            onClick={() => this.addComponentToArgs(ConditionDropDownMenu)} // Pass desired component type to add
+          />
+        )}
       </div>
     );
   }

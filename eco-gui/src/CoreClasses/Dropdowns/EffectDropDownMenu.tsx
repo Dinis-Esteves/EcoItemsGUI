@@ -100,79 +100,79 @@ class EffectDropDownMenu extends AbstractDropDownMenu {
 
   toYML(ident = 0): string {
     ident += 1;
-    
-    const effectId = this.getValue();  // Get the selected effect's ID or name
-    
+
+    const effectId = this.getValue(); // Get the selected effect's ID or name
+
     // Initialize categorized arrays for different component types
     let effectsYAML = [];
     let conditionsYAML = [];
     let mutatorsYAML = [];
     let filtersYAML = [];
     let miscellaneousYAML = [];
-    
+
     // Generate YAML for arguments and categorize components
-    const argsYML = this.state.argRefs.map(ref => {
+    const argsYML = this.state.argRefs
+      .map((ref) => {
         if (ref.current) {
-            const yamlString = ref.current.toYML(ident);  // Generate YAML for each argument component
-            if (yamlString.trim() !== "") {
-                if (ref.current instanceof EffectDropDownMenu) {
-                    effectsYAML.push(`${"\t".repeat(ident)}${yamlString}`);
-                } else if (ref.current instanceof ConditionDropDownMenu) {
-                    conditionsYAML.push(`${"\t".repeat(ident+2)}${yamlString}`);
-                } else if (ref.current instanceof MutatorDropDownMenu) {
-                    mutatorsYAML.push(`${"\t".repeat(ident)}${yamlString}`);
-                } else if (ref.current instanceof FilterDropDownMenu) {
-                    filtersYAML.push(`${"\t".repeat(ident)}${yamlString}`);
-                } else {
-                    miscellaneousYAML.push(`${"\t".repeat(ident)}${yamlString}`);
-                }
+          const yamlString = ref.current.toYML(ident); // Generate YAML for each argument component
+          if (yamlString.trim() !== "") {
+            if (ref.current instanceof EffectDropDownMenu) {
+              effectsYAML.push(`${"\t".repeat(ident)}${yamlString}`);
+            } else if (ref.current instanceof ConditionDropDownMenu) {
+              conditionsYAML.push(`${"\t".repeat(ident + 2)}${yamlString}`);
+            } else if (ref.current instanceof MutatorDropDownMenu) {
+              mutatorsYAML.push(`${"\t".repeat(ident)}${yamlString}`);
+            } else if (ref.current instanceof FilterDropDownMenu) {
+              filtersYAML.push(`${"\t".repeat(ident)}${yamlString}`);
+            } else {
+              miscellaneousYAML.push(`${"\t".repeat(ident)}${yamlString}`);
             }
+          }
         }
         return null;
-    }).filter(Boolean);
+      })
+      .filter(Boolean);
 
     // Format the main effect's YAML entry
     const mainEffectYML = `${argsYML.join("\n")}`;
 
     // Add main effect to the beginning of effects YAML
     if (effectsYAML.length > 0) {
-        effectsYAML.unshift(mainEffectYML);
+      effectsYAML.unshift(mainEffectYML);
     } else {
-        effectsYAML = [mainEffectYML];  // Ensure main effect is included if there are no nested effects
+      effectsYAML = [mainEffectYML]; // Ensure main effect is included if there are no nested effects
     }
     // Helper function to format each section, skipping empty sections
     const formatSection = (header, content) =>
-        content.length ? `${header}${content.join("\n")}` : "";
+      content.length ? `${header}${content.join("\n")}` : "";
 
     // Generate the final YAML content, omitting empty sections
     if (this.state.hasEffectArgs) {
-   
-    return [
+      return [
         `\n ${"\t".repeat(ident - 1)}- args:`,
         formatSection("\n\teffects:", effectsYAML),
         formatSection("\n\tconditions:", conditionsYAML),
         formatSection("\tmutators:", mutatorsYAML),
         formatSection("\tfilters:", filtersYAML),
         miscellaneousYAML.join("\n"),
-        `${"\t".repeat(ident - 1)}- id: ${effectId}`
-    ]
-    .filter(Boolean)  // Remove empty sections
-    .join("\n");    // Join sections with spacing 
+        `${"\t".repeat(ident - 1)}- id: ${effectId}`,
+      ]
+        .filter(Boolean) // Remove empty sections
+        .join("\n"); // Join sections with spacing
     }
 
     return [
-        `\n${"\t".repeat(ident - 1)}- args:`,
-        formatSection("", effectsYAML),
-        formatSection("", conditionsYAML),
-        formatSection("", mutatorsYAML),
-        formatSection("", filtersYAML),
-        miscellaneousYAML.join('\n'),
-        `${"\t".repeat(ident - 1)}- id: ${effectId}`
+      `\n${"\t".repeat(ident - 1)}- args:`,
+      formatSection("", effectsYAML),
+      formatSection("", conditionsYAML),
+      formatSection("", mutatorsYAML),
+      formatSection("", filtersYAML),
+      miscellaneousYAML.join("\n"),
+      `${"\t".repeat(ident - 1)}- id: ${effectId}`,
     ]
-    .filter(Boolean)  // Remove empty sections
-    .join("\n");    // Join sections with spacing 
-}
-
+      .filter(Boolean) // Remove empty sections
+      .join("\n"); // Join sections with spacing
+  }
 
   render(): JSX.Element {
     return (

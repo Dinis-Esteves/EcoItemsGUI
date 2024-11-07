@@ -30,8 +30,8 @@
         "conditions": "condition"
     },
     "at_least_of": {
-        "conditions": "condition",
-        "amount": "int"
+        "amount": "int",
+        "conditions": "condition"
     },
     "below_balance": {
         "balance": "float"
