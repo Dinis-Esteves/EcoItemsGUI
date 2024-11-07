@@ -89,7 +89,7 @@ class ConditionDropDownMenu extends AbstractDropDownMenu {
     // Format the output string with tabs
     return `\n${"\t".repeat(ident - 1)}- args:\n${argsYML}\n${"\t".repeat(
       ident - 1
-    )}id: ${effectValue}`; // Use \t for indentation
+    )}id: ${effectValue}\n`; // Use \t for indentation
   }
 
   render(): JSX.Element {

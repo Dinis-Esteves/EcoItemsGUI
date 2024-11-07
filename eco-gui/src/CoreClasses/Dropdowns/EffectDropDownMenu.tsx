@@ -2,10 +2,12 @@ import React from "react";
 import AbstractDropDownMenu from "./AbstractDropDownMenu";
 import Toolbox from "../Toolbox";
 import Arg from "../Arg";
-
-// Assume effects-args.json is imported or fetched here
 import effectsArgs from "../../assets/effects-args.json";
 import ShapeDropDownMenu from "./ShapeDropDownMenu";
+import AddButton from "../AddButton";
+import ConditionDropDownMenu from "./ConditionDropDownMenu";
+import MutatorDropDownMenu from "./MutatorDropDownMenu";
+import FilterDropDownMenu from "./FilterDropDownMenu";
 
 class EffectDropDownMenu extends AbstractDropDownMenu {
   constructor(props: any) {
@@ -25,6 +27,7 @@ class EffectDropDownMenu extends AbstractDropDownMenu {
       optionsMap: new Map(),
       Args: [], // Initialize state to hold Arg components
       argRefs: [], // Store refs for Arg components
+      hasEffectArgs: false, // State to track if there are effect-type arguments
     };
   }
 
@@ -38,12 +41,13 @@ class EffectDropDownMenu extends AbstractDropDownMenu {
   // Function to generate Arg components from JSON data
   generateArgsComponents(effectName: string) {
     const args = effectsArgs[effectName]; // Get the args based on the effect name
-    if (!args) return []; // Return an empty array if no args found
+    if (!args)
+      return { argComponents: [], newArgRefs: [], hasEffectArgs: false }; // Return an empty array if no args found
 
     const newArgRefs = []; // Array to hold refs for the newly created Arg components
+    let hasEffectArgs = false; // Flag to track if there are effect-type arguments
 
     const argComponents = Object.entries(args).map(([key, type], index) => {
-      // Generate Arg components based on type
       const ref = React.createRef<Arg>(); // Create a ref for each Arg component
       newArgRefs.push(ref); // Store the ref
 
@@ -59,6 +63,7 @@ class EffectDropDownMenu extends AbstractDropDownMenu {
         case "boolean":
           return <Arg key={index} ref={ref} type="checkbox" label={key} />;
         case "effect":
+          hasEffectArgs = true; // Set flag if there's an effect argument
           return <EffectDropDownMenu key={index} ref={ref} />;
         case "shape":
           return <ShapeDropDownMenu key={index} ref={ref} />;
@@ -67,34 +72,107 @@ class EffectDropDownMenu extends AbstractDropDownMenu {
       }
     });
 
-    this.setState({ argRefs: newArgRefs }); // Update state with new refs
-    return argComponents; // Return the generated Arg components
+    return { argComponents, newArgRefs, hasEffectArgs }; // Return components and updated refs
   }
 
-  // Define the onChange method to update Args
+  addComponentToArgs = (ComponentType) => {
+    const newComponentRef = React.createRef(); // Create a new ref for the new component
+
+    // Create an instance of the component and pass the ref to it
+    const newComponent = (
+      <ComponentType key={this.state.Args.length} ref={newComponentRef} />
+    );
+
+    this.setState((prevState) => ({
+      Args: [...prevState.Args, newComponent],
+      argRefs: [...prevState.argRefs, newComponentRef],
+    }));
+  };
+
+  // Define the onChange method to update Args when a new effect is selected
   onChange = (option: any) => {
     super.setValue(option.value);
 
-    // Clear previous Args and generate new Args from JSON
-    const newArgs = this.generateArgsComponents(option.value);
-    this.setState({ Args: newArgs });
+    const { argComponents, newArgRefs, hasEffectArgs } =
+      this.generateArgsComponents(option.value);
+    this.setState({ Args: argComponents, argRefs: newArgRefs, hasEffectArgs });
   };
 
-  toYML(ident: number = 0): string {
-    ident += 1; // Increment ident for indentation
-    const effectValue = this.getValue(); // Get the effect value
-    const argsYML = this.state.argRefs
-      .map((ref) =>
-        ref.current ? `${"\t".repeat(ident)}${ref.current.toYML(ident)}` : null
-      ) // Prefix each Arg YML with tabs
-      .filter(Boolean) // Filter out null values
-      .join("\n"); // Join all Arg YML strings with newlines
+  toYML(ident = 0): string {
+    ident += 1;
+    
+    const effectId = this.getValue();  // Get the selected effect's ID or name
+    
+    // Initialize categorized arrays for different component types
+    let effectsYAML = [];
+    let conditionsYAML = [];
+    let mutatorsYAML = [];
+    let filtersYAML = [];
+    let miscellaneousYAML = [];
+    
+    // Generate YAML for arguments and categorize components
+    const argsYML = this.state.argRefs.map(ref => {
+        if (ref.current) {
+            const yamlString = ref.current.toYML(ident);  // Generate YAML for each argument component
+            if (yamlString.trim() !== "") {
+                if (ref.current instanceof EffectDropDownMenu) {
+                    effectsYAML.push(`${"\t".repeat(ident)}${yamlString}`);
+                } else if (ref.current instanceof ConditionDropDownMenu) {
+                    conditionsYAML.push(`${"\t".repeat(ident+2)}${yamlString}`);
+                } else if (ref.current instanceof MutatorDropDownMenu) {
+                    mutatorsYAML.push(`${"\t".repeat(ident)}${yamlString}`);
+                } else if (ref.current instanceof FilterDropDownMenu) {
+                    filtersYAML.push(`${"\t".repeat(ident)}${yamlString}`);
+                } else {
+                    miscellaneousYAML.push(`${"\t".repeat(ident)}${yamlString}`);
+                }
+            }
+        }
+        return null;
+    }).filter(Boolean);
 
-    // Format the output string with tabs
-    return `\n${"\t".repeat(ident - 1)}- args:\n${argsYML}\n${"\t".repeat(
-      ident - 1
-    )}id: ${effectValue}`; // Use \t for indentation
-  }
+    // Format the main effect's YAML entry
+    const mainEffectYML = `${argsYML.join("\n")}`;
+
+    // Add main effect to the beginning of effects YAML
+    if (effectsYAML.length > 0) {
+        effectsYAML.unshift(mainEffectYML);
+    } else {
+        effectsYAML = [mainEffectYML];  // Ensure main effect is included if there are no nested effects
+    }
+    // Helper function to format each section, skipping empty sections
+    const formatSection = (header, content) =>
+        content.length ? `${header}${content.join("\n")}` : "";
+
+    // Generate the final YAML content, omitting empty sections
+    if (this.state.hasEffectArgs) {
+   
+    return [
+        `\n ${"\t".repeat(ident - 1)}- args:`,
+        formatSection("\n\teffects:", effectsYAML),
+        formatSection("\n\tconditions:", conditionsYAML),
+        formatSection("\tmutators:", mutatorsYAML),
+        formatSection("\tfilters:", filtersYAML),
+        miscellaneousYAML.join("\n"),
+        `${"\t".repeat(ident - 1)}- id: ${effectId}`
+    ]
+    .filter(Boolean)  // Remove empty sections
+    .join("\n");    // Join sections with spacing 
+    }
+
+    return [
+        `\n${"\t".repeat(ident - 1)}- args:`,
+        formatSection("", effectsYAML),
+        formatSection("", conditionsYAML),
+        formatSection("", mutatorsYAML),
+        formatSection("", filtersYAML),
+        miscellaneousYAML.join('\n'),
+        `${"\t".repeat(ident - 1)}- id: ${effectId}`
+    ]
+    .filter(Boolean)  // Remove empty sections
+    .join("\n");    // Join sections with spacing 
+}
+
 
   render(): JSX.Element {
     return (
@@ -102,7 +180,23 @@ class EffectDropDownMenu extends AbstractDropDownMenu {
         {super.render()}
 
         {/* Render all Arg components stored in state */}
-        <div className="args-container">{this.state.Args}</div>
+        <div className="args-container">
+          {this.state.Args}
+
+          {/* Render AddButton only if the effect has arguments */}
+          {this.state.hasEffectArgs && (
+            <AddButton
+              component={<EffectDropDownMenu />}
+              onClick={() => this.addComponentToArgs(EffectDropDownMenu)} // Pass desired component type to add
+            />
+          )}
+          {
+            <AddButton
+              component={<ConditionDropDownMenu />}
+              onClick={() => this.addComponentToArgs(ConditionDropDownMenu)} // Pass desired component type to add
+            />
+          }
+        </div>
       </div>
     );
   }
