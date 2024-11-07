@@ -1,0 +1,16 @@
+https://plugins.auxilor.io/effects/all-mutators/block_to_location
+https://plugins.auxilor.io/effects/all-mutators/dispatcher_as_player
+https://plugins.auxilor.io/effects/all-mutators/dispatcher_as_victim
+https://plugins.auxilor.io/effects/all-mutators/location_to_block
+https://plugins.auxilor.io/effects/all-mutators/location_to_cursor
+https://plugins.auxilor.io/effects/all-mutators/location_to_drop
+https://plugins.auxilor.io/effects/all-mutators/location_to_player
+https://plugins.auxilor.io/effects/all-mutators/location_to_projectile
+https://plugins.auxilor.io/effects/all-mutators/location_to_victim
+https://plugins.auxilor.io/effects/all-mutators/player_as_victim
+https://plugins.auxilor.io/effects/all-mutators/spin_location
+https://plugins.auxilor.io/effects/all-mutators/spin_velocity
+https://plugins.auxilor.io/effects/all-mutators/translate_location
+https://plugins.auxilor.io/effects/all-mutators/victim_as_dispatcher
+https://plugins.auxilor.io/effects/all-mutators/victim_as_player
+https://plugins.auxilor.io/effects/all-mutators/victim_to_owner

@@ -1,0 +1,291 @@
+{
+    "above_balance": {
+        "balance": "float"
+    },
+    "": {},
+    "above_global_points": {
+        "type": "str",
+        "amount": "int"
+    },
+    "above_health_percent": {
+        "percent": "int"
+    },
+    "above_hunger_percent": {
+        "percent": "int"
+    },
+    "above_magic": {
+        "type": "str",
+        "amount": "int"
+    },
+    "above_points": {
+        "type": "str",
+        "amount": "int"
+    },
+    "above_xp_level": {
+        "level": "int"
+    },
+    "above_y": {
+        "y": "int"
+    },
+    "any_of": {
+        "conditions": "str"
+    },
+    "at_least_of": {
+        "conditions": "str",
+        "amount": "int"
+    },
+    "below_balance": {
+        "balance": "float"
+    },
+    "below_global_points": {
+        "type": "str",
+        "amount": "int"
+    },
+    "below_health_percent": {
+        "percent": "int"
+    },
+    "below_hunger_percent": {
+        "percent": "int"
+    },
+    "below_magic": {
+        "type": "str",
+        "amount": "int"
+    },
+    "below_points": {
+        "type": "str",
+        "amount": "int"
+    },
+    "below_xp_level": {
+        "level": "int"
+    },
+    "below_y": {
+        "y": "int"
+    },
+    "can_afford_price": {
+        "value": "int",
+        "type": "str"
+    },
+    "global_points_equal": {
+        "type": "str",
+        "amount": "int"
+    },
+    "has_active_job": {
+        "job": "str"
+    },
+    "has_active_pet": {
+        "pet": "str"
+    },
+    "has_boss_bar_visible": {},
+    "has_completed_advancement": {},
+    "has_completed_quest": {
+        "quest": "str"
+    },
+    "has_completed_task": {
+        "quest": "str",
+        "task": "str"
+    },
+    "has_ecoitem": {
+        "item": "str"
+    },
+    "has_enchant": {
+        "enchant": "str",
+        "slot": "str"
+    },
+    "has_item": {
+        "items": "str",
+        "- talismans": "str"
+    },
+    "has_item_data": {
+        "key": "str"
+    },
+    "has_job_level": {
+        "job": "str",
+        "level": "int"
+    },
+    "has_mana": {
+        "amount": "int"
+    },
+    "has_permission": {
+        "permission": "str"
+    },
+    "has_pet": {
+        "pet": "str"
+    },
+    "has_pet_level": {
+        "pet": "str",
+        "level": "int"
+    },
+    "has_potion_effect": {
+        "effect": "str"
+    },
+    "has_quest_active": {
+        "quest": "str"
+    },
+    "has_reforge": {
+        "reforge": "str"
+    },
+    "has_scoreboard_visible": {},
+    "has_scroll": {
+        "scroll": "str"
+    },
+    "has_skill_level": {
+        "skill": "str",
+        "level": "int"
+    },
+    "has_talisman": {
+        "talisman": "str"
+    },
+    "in_air": {},
+    "in_biome": {
+        "biomes": "str"
+    },
+    "in_block": {},
+    "in_bubble": {},
+    "in_lava": {},
+    "in_mainhand": {
+        "items": "str",
+        "- diamond_sword sharpness": "int",
+        "- netherite_sword sharpness": "int"
+    },
+    "in_offhand": {
+        "items": "str",
+        "- diamond_sword sharpness": "int",
+        "- netherite_sword sharpness": "int"
+    },
+    "in_rain": {},
+    "in_region": {
+        "region": "str"
+    },
+    "in_slot": {
+        "slot": "str"
+    },
+    "in_water": {},
+    "in_world": {
+        "world": "str"
+    },
+    "is_alive": {},
+    "is_booster_active": {
+        "booster": "str"
+    },
+    "is_expression_true": {
+        "expression": "str"
+    },
+    "is_falling": {},
+    "is_flying": {},
+    "is_frozen": {},
+    "is_gliding": {},
+    "is_night": {},
+    "is_op": {},
+    "is_sneaking": {},
+    "is_sprinting": {},
+    "is_storm": {},
+    "is_submerged": {},
+    "is_swimming": {},
+    "is_wearing_set": {
+        "set": "str"
+    },
+    "item_data_equals": {
+        "key": "str",
+        "value": "str"
+    },
+    "item_level_above": {
+        "id": "str",
+        "level": "int"
+    },
+    "item_level_below": {
+        "id": "str",
+        "level": "int"
+    },
+    "item_level_equals": {
+        "id": "str",
+        "level": "int"
+    },
+    "item_points_above": {
+        "type": "str",
+        "amount": "int"
+    },
+    "item_points_below": {
+        "type": "str",
+        "amount": "int"
+    },
+    "item_points_equal": {
+        "type": "str",
+        "amount": "int"
+    },
+    "light_level_below": {
+        "level": "int"
+    },
+    "near_entity": {
+        "entities": "str",
+        "- ecomobs": "str",
+        "radius": "int",
+        "amount": "int"
+    },
+    "on_fire": {},
+    "on_ground": {},
+    "placeholder_contains": {
+        "placeholder": "str",
+        "value": "str",
+        "ignore_case": "str"
+    },
+    "placeholder_equals": {
+        "placeholder": "str",
+        "value": "int"
+    },
+    "placeholder_greater_than": {
+        "placeholder": "str",
+        "value": "int"
+    },
+    "placeholder_less_than": {
+        "placeholder": "str",
+        "value": "int"
+    },
+    "points_equal": {
+        "type": "str",
+        "amount": "int"
+    },
+    "riding_entity": {
+        "entities": "str"
+    },
+    "standing_on_block": {
+        "block": "str"
+    },
+    "stat_above": {
+        "stat": "str",
+        "level": "int"
+    },
+    "stat_below": {
+        "stat": "str",
+        "level": "int"
+    },
+    "stat_equals": {
+        "stat": "str",
+        "level": "int"
+    },
+    "wearing_boots": {
+        "items": "str",
+        "- diamond_boots protection": "int",
+        "- netherite_boots protection": "int"
+    },
+    "wearing_chestplate": {
+        "items": "str",
+        "- diamond_chestplate protection": "int",
+        "- netherite_chestplate protection": "int"
+    },
+    "wearing_helmet": {
+        "items": "str",
+        "- diamond_helmet protection": "int",
+        "- netherite_helmet protection": "int"
+    },
+    "wearing_leggings": {
+        "items": "str",
+        "- diamond_leggings protection": "int",
+        "- netherite_leggings protection": "int"
+    },
+    "within_radius_of": {
+        "x": "int",
+        "y": "int",
+        "z": "int",
+        "radius": "int"
+    }
+}

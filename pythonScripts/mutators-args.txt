@@ -1,0 +1,48 @@
+block_to_location
+{}
+
+dispatcher_as_player
+{}
+
+dispatcher_as_victim
+{}
+
+location_to_block
+{}
+
+location_to_cursor
+{'target': 'str', 'start': 'str'}
+
+location_to_drop
+{}
+
+location_to_player
+{}
+
+location_to_projectile
+{}
+
+location_to_victim
+{}
+
+player_as_victim
+{}
+
+spin_location
+{'angle': 'int', 'distance': 'int'}
+
+spin_velocity
+{'angle': 'int'}
+
+translate_location
+{'add_x': 'str', 'add_y': 'float', 'add-z': 'int'}
+
+victim_as_dispatcher
+{}
+
+victim_as_player
+{}
+
+victim_to_owner
+{}
+

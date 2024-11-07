@@ -1,0 +1,144 @@
+above_health_percent
+{'above_health_percent': 'int'}
+
+advancements
+{'advancements': 'str', '- "minecraft': 'str'}
+
+blocks
+{'blocks': 'str'}
+
+damage_cause
+{'damage_cause': 'str'}
+
+enchant
+{'enchant': 'str'}
+
+entities
+{'entities': 'str'}
+
+envoy_type
+{'envoy_type': 'str'}
+
+from_spawner
+{'from_spawner': 'str'}
+
+fully_charged
+{'fully_charged': 'str'}
+
+fully_grown
+{'fully_grown': 'str'}
+
+honey_level_full
+{'honey_level_full': 'str'}
+
+is_behind_victim
+{'is_behind_victim': 'str'}
+
+is_boss
+{'is_boss': 'str'}
+
+is_expression_true
+{'is_expression_true': 'str'}
+
+is_npc
+{'is_npc': 'str'}
+
+is_passive
+{'is_passive': 'str'}
+
+item_durability_above
+{'item_durability_above': 'int'}
+
+item_durability_above_percent
+{'item_durability_above_percent': 'int'}
+
+item_durability_below
+{'item_durability_below': 'int'}
+
+item_durability_below_percent
+{'item_durability_below_percent': 'int'}
+
+items
+{'items': 'str'}
+
+job
+{'job': 'str'}
+
+magic_type
+{'magic_type': 'str'}
+
+npc
+{'npc': 'str'}
+
+on_max_health
+{'on_max_health': 'str'}
+
+pet
+{'pet': 'str'}
+
+player_name
+{'player_name': 'str'}
+
+player_placed
+{'player_placed': 'str'}
+
+potion_effect
+{'potion_effect': 'str'}
+
+projectiles
+{'projectiles': 'str'}
+
+quest
+{'quest': 'str'}
+
+region
+{'region': 'str'}
+
+scroll
+{'scroll': 'str'}
+
+sheep_color
+{'sheep_color': 'str'}
+
+shop_item
+{'shop_item': 'str'}
+
+skill
+{'skill': 'str'}
+
+spawner_entity
+{'spawner_entity': 'str'}
+
+swept
+{'swept': 'str'}
+
+task
+{'task': 'str'}
+
+text
+{'text': 'str'}
+
+text_contains
+{'text_contains': 'str'}
+
+this_item
+{'this_item': 'str'}
+
+value_above
+{'value_above': 'float'}
+
+value_below
+{'value_below': 'float'}
+
+value_equals
+{'value_equals': 'int'}
+
+victim_conditions
+{'victim_conditions': 'str', 'args': 'str'}
+
+victim_name
+{'victim_name': 'str'}
+
+vote_service
+{'vote_service': 'str'}
+

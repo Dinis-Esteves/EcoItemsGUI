@@ -1,0 +1,587 @@
+add_damage
+{'damage': 'int'}
+
+add_durability
+{'durability': 'int'}
+
+add_enchant
+{'enchant': 'str', 'level': 'int'}
+
+add_global_points
+{'type': 'str', 'amount': 'int'}
+
+add_holder
+{'effects': 'str', 'conditions': 'str', 'duration': 'int'}
+
+add_holder_in_radius
+{'effects': 'str', 'conditions': 'str', 'duration': 'int', 'radius': 'float', 'apply-to-self': 'str'}
+
+add_holder_to_victim
+{'effects': 'str', 'conditions': 'str', 'duration': 'int'}
+
+add_permanent_holder_in_radius
+{'effects': 'str', 'conditions': 'str', 'radius': 'float', 'apply-to-self': 'str'}
+
+add_points
+{'type': 'str', 'amount': 'int'}
+
+add_stat
+{'stat': 'str', 'amount': 'int'}
+
+add_stat_temporarily
+{'stat': 'str', 'amount': 'int', 'duration': 'int'}
+
+age_crop
+{'age': 'int'}
+
+all_players
+{'effects': 'str'}
+
+animation
+{'animation': 'str', 'amount': 'int', 'duration': 'int', 'radius': 'int', 'speed': 'int'}
+
+aoe
+{'effects': 'str', 'shape': 'str', 'radius': 'int', 'angle': 'int'}
+
+aoe_blocks
+{'effects': 'str', 'shape': 'str', 'radius': 'int', 'distance': 'int', 'pierce_blocks': 'str', 'pierce_entities': 'str'}
+
+armor
+{'points': 'int'}
+
+armor_toughness
+{'points': 'int'}
+
+arrow_ring
+{'amount': 'int', 'height': 'int', 'radius': 'float', 'arrow_damage': 'int', 'fire_ticks': 'int'}
+
+attack_speed_multiplier
+{'multiplier': 'float'}
+
+autosmelt
+{'drop_xp': 'str'}
+
+bleed
+{'damage': 'int', 'interval': 'int', 'amount': 'int'}
+
+block_commands
+{'messages': 'str', 'commands': 'str'}
+
+block_reach
+{'reach': 'int'}
+
+bonus_health
+{'health': 'int'}
+
+break_block
+{'prevent_trigger': 'str'}
+
+brew_time_multiplier
+{'multiplier': 'float'}
+
+broadcast
+{'message': 'str'}
+
+cancel_event
+{}
+
+clear_invulnerability
+{}
+
+close_inventory
+{}
+
+consume_held_item
+{'amount': 'int'}
+
+create_boss_bar
+{'id': 'str', 'name': 'str', 'color': 'str', 'style': 'str', 'progress': 'int'}
+
+create_explosion
+{'power': 'int', 'amount': 'int'}
+
+create_hologram
+{'text': 'str', 'duration': 'int'}
+
+crit_multiplier
+{'multiplier': 'int'}
+
+damage_armor
+{'damage': 'int'}
+
+damage_item
+{'damage': 'int'}
+
+damage_mainhand
+{'damage': 'int'}
+
+damage_multiplier
+{'multiplier': 'float'}
+
+damage_nearby_entities
+{'damage': 'int', 'radius': 'int', 'entities': 'str', 'damage_as_player': 'str', 'damage_self': 'str'}
+
+damage_offhand
+{'damage': 'int'}
+
+damage_twice
+{}
+
+damage_victim
+{'damage': 'float', 'true-damage': 'str'}
+
+dont_consume_lapis_chance
+{'chance': 'int'}
+
+dont_consume_xp_chance
+{'chance': 'int'}
+
+drill
+{'amount': 'int', 'blacklisted_blocks': 'str', 'check_hardness': 'str', 'disable_on_sneak': 'str', 'whitelist': 'str'}
+
+drop_item
+{}
+
+drop_item_slot
+{'slot': 'str', 'amount': 'int'}
+
+drop_pickup_item
+{'item': 'str', 'run-type': 'str', 'effects': 'str'}
+
+drop_random_item
+{'items': 'str'}
+
+drop_weighted_random_item
+{'items': 'str', '- items': 'str', '- item': 'str'}
+
+elytra_boost_save_chance
+{'chance': 'int'}
+
+entity_reach
+{'reach': 'int'}
+
+extinguish
+{}
+
+feather_step
+{}
+
+flight
+{}
+
+food_multiplier
+{'multiplier': 'int'}
+
+gain_task_xp
+{'quest': 'str', 'task': 'str', 'xp': 'int'}
+
+give_food
+{'amount': 'int'}
+
+give_global_points
+{'type': 'str', 'amount': 'int'}
+
+give_health
+{'amount': 'int'}
+
+give_item
+{'items': 'str', '- "ecoitems': 'str', '- "diamond_pickaxe 1 unbreaking': 'str', 'slot': 'str'}
+
+give_item_points
+{'type': 'str', 'amount': 'int'}
+
+give_job_xp
+{'amount': 'int', 'job': 'str'}
+
+give_magic
+{'type': 'str', 'amount': 'int'}
+
+give_mcmmo_xp
+{'amount': 'int', 'skill': 'str'}
+
+give_money
+{'amount': 'int'}
+
+give_oxygen
+{'amount': 'int'}
+
+give_permission
+{'permission': 'str'}
+
+give_pet_xp
+{'amount': 'int', 'pet': 'str'}
+
+give_points
+{'type': 'str', 'amount': 'int'}
+
+give_price
+{'value': 'int', 'type': 'str'}
+
+give_saturation
+{'amount': 'float'}
+
+give_skill_xp
+{'amount': 'int', 'skill': 'str'}
+
+give_skill_xp_naturally
+{'amount': 'int', 'skill': 'str'}
+
+give_task_xp
+{'quest': 'str', 'task': 'str', 'xp': 'int'}
+
+give_xp
+{'amount': 'int', 'apply_mending': 'str'}
+
+glow_nearby_blocks
+{'radius': 'int', 'duration': 'int', 'colors': 'str'}
+
+gravity_multiplier
+{'multiplier': 'float'}
+
+homing
+{'distance': 'int', 'targets': 'str'}
+
+hunger_multiplier
+{'multiplier': 'float'}
+
+ignite
+{'damage_per_tick': 'int', 'ticks': 'int'}
+
+increase_step_height
+{'height': 'int'}
+
+inscribe_item
+{'scroll': 'str'}
+
+item_durability_multiplier
+{'multiplier': 'float'}
+
+job_xp_multiplier
+{'multiplier': 'float', 'jobs': 'str'}
+
+jobs_money_multiplier
+{'multiplier': 'float', 'jobs': 'str'}
+
+jobs_xp_multiplier
+{'multiplier': 'float', 'jobs': 'str'}
+
+jump_strength_multiplier
+{'multiplier': 'float'}
+
+keep_inventory
+{}
+
+keep_level
+{}
+
+kick
+{'message': 'str'}
+
+knock_away
+{'velocity': 'float'}
+
+knockback_multiplier
+{'multiplier': 'int'}
+
+knockback_resistance_multiplier
+{'multiplier': 'int'}
+
+level_item
+{'id': 'str', 'xp': 'str'}
+
+luck_multiplier
+{'multiplier': 'float'}
+
+magic_regen_multiplier
+{'multiplier': 'float', 'types': 'str'}
+
+make_skill_crit
+{'multiplier': 'float'}
+
+mcmmo_xp_multiplier
+{'multiplier': 'float', 'skills': 'str'}
+
+mine_radius
+{'blacklisted_blocks': 'str', 'check_hardness': 'str', 'disable_on_sneak': 'str', 'whitelist': 'str', 'prevent_trigger': 'str'}
+
+mine_radius_one_deep
+{'blacklisted_blocks': 'str', 'check_hardness': 'str', 'disable_on_sneak': 'str', 'whitelist': 'str', 'no_corners': 'str', 'prevent_trigger': 'str'}
+
+mine_vein
+{'limit': 'int', 'blocks': 'str', 'disable_on_sneak': 'str', 'prevent_trigger': 'str', 'filters': 'str', 'player_placed': 'str'}
+
+mining_efficiency
+{'amount': 'int'}
+
+mining_speed_multiplier
+{'multiplier': 'float'}
+
+mob_coins_multiplier
+{'multiplier': 'float'}
+
+movement_efficiency_multiplier
+{'multiplier': 'float'}
+
+movement_speed_multiplier
+{'multiplier': 'float'}
+
+multiply_all_stats
+{'multiplier': 'float'}
+
+multiply_drops
+{'on_items': 'str', 'fortune': 'int', 'multiplier': 'int'}
+
+multiply_global_points
+{'type': 'str', 'multiplier': 'int'}
+
+multiply_item_points
+{'type': 'str', 'multiplier': 'float'}
+
+multiply_magic
+{'type': 'str', 'multiplier': 'float'}
+
+multiply_points
+{'type': 'str', 'multiplier': 'int'}
+
+multiply_stat
+{'stat': 'str', 'multiplier': 'float'}
+
+multiply_stat_temporarily
+{'stat': 'str', 'multiplier': 'float', 'duration': 'int'}
+
+multiply_velocity
+{'multiplier': 'float'}
+
+name_entity
+{'name': 'str'}
+
+open_crafting
+{}
+
+open_ender_chest
+{}
+
+particle_animation
+{'particle-amount': 'int', 'animation': 'str', 'tick-multiplier': 'int', 'entity': 'str', 'use-eye-location': 'str'}
+
+particle_line
+{'amount': 'int', 'spacing': 'float'}
+
+pay_price
+{'value': 'int', 'type': 'str'}
+
+permanent_potion_effect
+{'level': 'int'}
+
+pet_xp_multiplier
+{'multiplier': 'float', 'pets': 'str'}
+
+piercing
+{'level': 'int'}
+
+play_animation
+{'animation': 'str'}
+
+play_sound
+{'pitch': 'float', 'volume': 'int'}
+
+potion_duration_multiplier
+{'multiplier': 'float'}
+
+potion_effect
+{'level': 'int', 'duration': 'int', 'apply_to_player': 'str'}
+
+pull_in
+{'velocity': 'float'}
+
+pull_to_location
+{'velocity': 'float'}
+
+quest_xp_multiplier
+{'multiplier': 'float', 'quests': 'str'}
+
+random_player
+{'effects': 'str'}
+
+rapid_bows
+{'percent_faster': 'int'}
+
+reel_speed_multiplier
+{'multiplier': 'float'}
+
+regen_multiplier
+{'multiplier': 'int'}
+
+remove_boss_bar
+{'id': 'str'}
+
+remove_enchant
+{'enchant': 'str'}
+
+remove_item
+{'item': 'str'}
+
+remove_item_data
+{'key': 'str'}
+
+remove_potion_effect
+{'apply_to_player': 'str'}
+
+repair_item
+{'damage': 'int'}
+
+replace_near
+{'radius': 'int', 'radius_y': 'int', 'replace_to': 'str', 'duration': 'int', 'whitelist': 'str', 'exposed_only': 'str', 'source_only': 'str', 'disable_on_sneak': 'str'}
+
+replant_crops
+{'consume_seeds': 'str', 'only_fully_grown': 'str'}
+
+rotate
+{'angle': 'int'}
+
+rotate_victim
+{'angle': 'int'}
+
+run_chain
+{'run-type': 'str', 'chain': 'str'}
+
+run_command
+{'command': 'str'}
+
+run_player_command
+{'command': 'str', 'as_op': 'str'}
+
+safe_fall_distance
+{'distance': 'float'}
+
+sell_items
+{'multiplier': 'float', 'whitelist': 'str'}
+
+sell_multiplier
+{'multiplier': 'float'}
+
+send_message
+{'message': 'str', 'messages': 'str', 'action_bar': 'str'}
+
+send_minimessage
+{'message': 'str', 'action_bar': 'str'}
+
+send_title
+{'title': 'str', 'subtitle': 'str'}
+
+set_armor_trim
+{'pattern': 'str', 'material': 'str'}
+
+set_block
+{'block': 'str'}
+
+set_custom_model_data
+{'model': 'int'}
+
+set_food
+{'amount': 'int'}
+
+set_freeze_ticks
+{'ticks': 'int'}
+
+set_global_points
+{'type': 'str', 'amount': 'int'}
+
+set_item_data
+{'key': 'str', 'value': 'str'}
+
+set_item_points
+{'type': 'str', 'amount': 'int'}
+
+set_points
+{'type': 'str', 'amount': 'int'}
+
+set_saturation
+{'amount': 'float'}
+
+set_velocity
+{'x': 'float', 'y': 'float', 'z': 'str'}
+
+set_victim_velocity
+{'x': 'float', 'y': 'float', 'z': 'str'}
+
+shoot
+{'inherit_velocity': 'str', 'no_source': 'str', 'projectile': 'str'}
+
+shoot_arrow
+{'inherit_velocity': 'str', 'no_source': 'str'}
+
+shuffle_hotbar
+{}
+
+skill_xp_multiplier
+{'multiplier': 'float', 'skills': 'str'}
+
+smite
+{'damage': 'int', 'silent': 'str'}
+
+sneaking_speed_multiplier
+{'multiplier': 'int'}
+
+spawn_entity
+{}
+
+spawn_mobs
+{'amount': 'int', 'ticks_to_live': 'int', 'health': 'int', 'range': 'int'}
+
+spawn_particle
+{'amount': 'int'}
+
+spawn_potion_cloud
+{'level': 'int', 'duration': 'int'}
+
+start_quest
+{'quest': 'str'}
+
+strike_lightning
+{'amount': 'int'}
+
+strip_ai
+{'duration': 'int'}
+
+swarm
+{'radius': 'int', 'entities': 'str'}
+
+take_money
+{'amount': 'int'}
+
+target_player
+{}
+
+telekinesis
+{}
+
+teleport
+{}
+
+teleport_to
+{'world': 'str', 'x': 'int', 'y': 'int', 'z': 'str'}
+
+teleport_to_ground
+{}
+
+traceback
+{'seconds': 'int'}
+
+transmission
+{'distance': 'int'}
+
+trigger_custom
+{'value': 'float'}
+
+underwater_mining_speed_multiplier
+{'multiplier': 'int'}
+
+update_boss_bar
+{'id': 'str', 'name': 'str', 'color': 'str', 'style': 'str', 'progress': 'str'}
+
+victim_speed_multiplier
+{'multiplier': 'float', 'duration': 'int'}
+
+xp_multiplier
+{'multiplier': 'float'}
