@@ -8,6 +8,7 @@ import AddButton from "../AddButton";
 import ConditionDropDownMenu from "./ConditionDropDownMenu";
 import MutatorDropDownMenu from "./MutatorDropDownMenu";
 import FilterDropDownMenu from "./FilterDropDownMenu";
+import TriggerDropDownMenu from "./TriggerDropDownMenu";
 
 class EffectDropDownMenu extends AbstractDropDownMenu {
   constructor(props: any) {
@@ -152,8 +153,11 @@ class EffectDropDownMenu extends AbstractDropDownMenu {
         `\n ${"\t".repeat(ident - 1)}- args:`,
         formatSection("\n\teffects:", effectsYAML),
         formatSection("\n\tconditions:", conditionsYAML),
+        '\n',
         formatSection("\tmutators:", mutatorsYAML),
+        '\n',
         formatSection("\tfilters:", filtersYAML),
+        '\n',
         miscellaneousYAML.join("\n"),
         `${"\t".repeat(ident - 1)}- id: ${effectId}`,
       ]
@@ -164,9 +168,9 @@ class EffectDropDownMenu extends AbstractDropDownMenu {
     return [
       `\n${"\t".repeat(ident - 1)}- args:`,
       formatSection("", effectsYAML),
-      formatSection("", conditionsYAML),
-      formatSection("", mutatorsYAML),
-      formatSection("", filtersYAML),
+      formatSection("conditions:", conditionsYAML),
+      formatSection("mutators:", mutatorsYAML),
+      formatSection("filters:", filtersYAML),
       miscellaneousYAML.join("\n"),
       `${"\t".repeat(ident - 1)}- id: ${effectId}`,
     ]
@@ -194,6 +198,18 @@ class EffectDropDownMenu extends AbstractDropDownMenu {
             <AddButton
               component={<ConditionDropDownMenu />}
               onClick={() => this.addComponentToArgs(ConditionDropDownMenu)} // Pass desired component type to add
+            />
+          }
+          {
+            <AddButton
+              component={<TriggerDropDownMenu />}
+              onClick={() => this.addComponentToArgs(TriggerDropDownMenu)}
+            />
+          }
+          {
+            <AddButton
+              component={<FilterDropDownMenu />}
+              onClick={() => this.addComponentToArgs(FilterDropDownMenu)}
             />
           }
         </div>
