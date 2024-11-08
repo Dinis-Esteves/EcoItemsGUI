@@ -35,10 +35,10 @@ class FilterDropDownMenu extends AbstractDropDownMenu {
 
   // Function to generate Arg components from JSON data
   generateArgsComponents(effectName: string) {
-    const args = effectsArgs[effectName]; // Get the args based on the effect name
+    const args = effectsArgs[effectName as keyof typeof effectsArgs] || {}; // Returns an empty object if undefined
     if (!args) return []; // Return an empty array if no args found
 
-    const newArgRefs = []; // Array to hold refs for the newly created Arg components
+    const newArgRefs: any = []; // Array to hold refs for the newly created Arg components
 
     const argComponents = Object.entries(args).map(([key, type], index) => {
       // Generate Arg components based on type
@@ -52,7 +52,7 @@ class FilterDropDownMenu extends AbstractDropDownMenu {
           return <Arg key={index} ref={ref} type="text" label={key} />;
         case "float":
           return (
-            <Arg key={index} ref={ref} type="number" label={key} step="0.1" />
+            <Arg key={index} ref={ref} type="number" label={key} />
           );
         case "boolean":
           return <Arg key={index} ref={ref} type="checkbox" label={key} />;
@@ -78,7 +78,7 @@ class FilterDropDownMenu extends AbstractDropDownMenu {
     ident += 1; // Increment ident for indentation
     const effectValue = this.getValue(); // Get the effect value
     const argsYML = this.state.argRefs
-      .map((ref) =>
+      .map((ref: any) =>
         ref.current ? `${"\t".repeat(ident)}${ref.current.toYML(ident)}` : null
       ) // Prefix each Arg YML with tabs
       .filter(Boolean) // Filter out null values

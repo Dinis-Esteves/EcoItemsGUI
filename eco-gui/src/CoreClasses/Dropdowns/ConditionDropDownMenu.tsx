@@ -1,8 +1,7 @@
-import React from "react";
+import React, { ComponentType } from "react";
 import AbstractDropDownMenu from "./AbstractDropDownMenu";
 import Toolbox from "../Toolbox";
 import Arg from "../Arg";
-
 import effectsArgs from "../../assets/conditions-args.json";
 import AddButton from "../AddButton";
 
@@ -35,15 +34,15 @@ class ConditionDropDownMenu extends AbstractDropDownMenu {
     });
   }
 
-  addComponentToArgs = (ComponentType) => {
+  addComponentToArgs = (ComponentType: ComponentType) => {
     const newComponentRef = React.createRef(); // Create a new ref for the new component
 
     // Create an instance of the component and pass the ref to it
     const newComponent = (
-      <ComponentType key={this.state.Args.length} ref={newComponentRef} />
+      <ComponentType key={this.state.Args.length} />
     );
 
-    this.setState((prevState) => ({
+    this.setState((prevState: any) => ({
       Args: [...prevState.Args, newComponent],
       argRefs: [...prevState.argRefs, newComponentRef],
     }));
@@ -51,10 +50,10 @@ class ConditionDropDownMenu extends AbstractDropDownMenu {
 
   // Function to generate Arg components from JSON data
   generateArgsComponents(effectName: string) {
-    const args = effectsArgs[effectName]; // Get the args based on the effect name
+    const args = effectsArgs[effectName as keyof typeof effectsArgs] || {}; // Returns an empty object if undefined
     if (!args) return []; // Return an empty array if no args found
 
-    const newArgRefs = []; // Array to hold refs for the newly created Arg components
+    const newArgRefs: any = []; // Array to hold refs for the newly created Arg components
 
     const argComponents = Object.entries(args).map(([key, type], index) => {
       // Generate Arg components based on type
@@ -68,13 +67,13 @@ class ConditionDropDownMenu extends AbstractDropDownMenu {
           return <Arg key={index} ref={ref} type="text" label={key} />;
         case "float":
           return (
-            <Arg key={index} ref={ref} type="number" label={key} step="0.1" />
+            <Arg key={index} ref={ref} type="number" label={key} />
           );
         case "boolean":
           return <Arg key={index} ref={ref} type="checkbox" label={key} />;
         case "condition":
-          this.state.hasConditionArgs = true;
-          return <ConditionDropDownMenu key={index} ref={ref} />;
+          this.setState({ hasConditionArgs: true });
+          return <ConditionDropDownMenu key={index} />;
         default:
           return null; // Handle unknown types
       }
@@ -101,7 +100,7 @@ class ConditionDropDownMenu extends AbstractDropDownMenu {
     let miscellaneousYAML: string[] = [];
 
     // Process each argument reference to generate YAML
-    this.state.argRefs.forEach((ref) => {
+    this.state.argRefs.forEach((ref: any) => {
       if (ref.current) {
         const yamlString = ref.current.toYML(ident);
         if (yamlString.trim() !== "") {

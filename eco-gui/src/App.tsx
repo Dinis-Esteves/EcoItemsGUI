@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Manager from "./CoreClasses/Manager";
 import "./App.css";
 import ConditionDropDownMenu from "./CoreClasses/Dropdowns/ConditionDropDownMenu";

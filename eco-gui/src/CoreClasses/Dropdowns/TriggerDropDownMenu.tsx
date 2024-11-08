@@ -1,7 +1,5 @@
-import React from "react";
 import AbstractDropDownMenu from "./AbstractDropDownMenu";
 import Toolbox from "../Toolbox";
-import Manager from "../Manager";
 
 class TriggerDropDownMenu extends AbstractDropDownMenu {
   constructor(props: any) {

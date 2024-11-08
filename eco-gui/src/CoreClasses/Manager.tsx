@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactElement } from "react";
 import ItemDropDownMenu from "./Dropdowns/ItemDropDownMenu";
 import EffectDropDownMenu from "./Dropdowns/EffectDropDownMenu";
 import ItemLoreComponent from "./ItemLoreComponent";
@@ -44,7 +44,9 @@ class Manager {
 
   public addComponent(component: React.ReactNode): void {
     const ref = React.createRef();
-    const componentWithRef = React.cloneElement(component, { ref });
+    const componentWithRef = React.isValidElement(component)
+    ? React.cloneElement(component as ReactElement, { ref })
+    : null;
     this.components.push(componentWithRef);
     this.componentRefs.push(ref);
   }
@@ -62,11 +64,11 @@ class Manager {
   }
 
   public generateYAMLFile() {
-    let effectsYAML = [];
-    let conditionsYAML = [];
-    let mutatorsYAML = [];
-    let filtersYAML = [];
-    let miscellaneousYAML = [];
+    let effectsYAML: string[] = [];
+    let conditionsYAML: string[] = [];
+    let mutatorsYAML: string[] = [];
+    let filtersYAML: string[] = [];
+    let miscellaneousYAML: string[] = [];
 
     this.componentRefs.forEach((ref) => {
       if (ref.current) {
@@ -87,7 +89,7 @@ class Manager {
       }
     });
 
-    const formatSection = (header, content) =>
+    const formatSection = (header: string, content: string[]) =>
       content.length ? `${header}\n${content.join("\n")}` : `${header} []`;
 
     const yamlContent = [

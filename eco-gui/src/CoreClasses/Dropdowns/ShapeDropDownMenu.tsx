@@ -35,7 +35,7 @@ class ShapeDropDownMenu extends AbstractDropDownMenu {
       return { label, type: type === "int" ? "number" : type === "boolean" ? "checkbox" : "text" };
     });
 
-    const newArgRefs = [];
+    const newArgRefs: any = [];
     const argComponents = fields.map((field, index) => {
       const ref = React.createRef<Arg>();
       newArgRefs.push(ref);
@@ -46,7 +46,6 @@ class ShapeDropDownMenu extends AbstractDropDownMenu {
           ref={ref}
           type={field.type}
           label={field.label}
-          onChange={(value) => this.handleArgChange(field.label, value)}
         />
       );
     });
@@ -55,14 +54,10 @@ class ShapeDropDownMenu extends AbstractDropDownMenu {
     return argComponents;
   }
 
-  handleArgChange(label: string, value: any) {
-    console.log(`${label} changed to ${value}`);
-  }
-
   toYML(ident: number = 0): string {
     // Use the stored key as the shape label in YAML
     const argsYML = (this.state.argRefs || [])
-      .map((ref) =>
+      .map((ref: any) =>
         ref.current ? `${"\t".repeat(ident)}${ref.current.toYML(ident)}` : null
       )
       .filter(Boolean)
@@ -82,5 +77,3 @@ class ShapeDropDownMenu extends AbstractDropDownMenu {
 }
 
 export default ShapeDropDownMenu;
-
-

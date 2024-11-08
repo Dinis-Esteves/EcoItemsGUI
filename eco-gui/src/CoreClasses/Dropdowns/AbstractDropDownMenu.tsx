@@ -2,7 +2,7 @@ import React from "react";
 import Manager from "../Manager";
 import Select from "react-select";
 
-abstract class AbstractDropDownMenu extends React.Component {
+abstract class AbstractDropDownMenu extends React.Component <any, any> {
   protected optionsMap: Map<string, string>;
   protected id: string;
   protected placeHolder: string;
@@ -43,7 +43,7 @@ abstract class AbstractDropDownMenu extends React.Component {
       <Select
         options={optionsArray}
         isSearchable
-        className={this.className}
+        className={this.className || "item-dropdown-menu"}
         id={this.id}
         placeholder={this.placeHolder}
         onChange={this.onChange}

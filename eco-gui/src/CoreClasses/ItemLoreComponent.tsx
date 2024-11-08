@@ -1,7 +1,6 @@
 import React from "react";
-import Manager from "./Manager";
 
-class ItemLoreComponent extends React.Component {
+class ItemLoreComponent extends React.Component<any, any> {
   constructor(props: any) {
     super(props);
     this.state = {
@@ -10,20 +9,20 @@ class ItemLoreComponent extends React.Component {
   }
 
   addInput = () => {
-    this.setState((prevState) => ({
+    this.setState((prevState: any) => ({
       inputs: [...prevState.inputs, ""],
     }));
   };
 
   removeInput = (index: number) => {
-    this.setState((prevState) => ({
-      inputs: prevState.inputs.filter((_, i) => i !== index),
+    this.setState((prevState: any) => ({
+      inputs: prevState.inputs.filter((_: any, i: any) => i !== index),
     }));
   };
 
   moveUp = (index: number) => {
     if (index === 0) return;
-    this.setState((prevState) => {
+    this.setState((prevState: any) => {
       const newInputs = [...prevState.inputs];
       [newInputs[index - 1], newInputs[index]] = [
         newInputs[index],
@@ -35,7 +34,7 @@ class ItemLoreComponent extends React.Component {
 
   moveDown = (index: number) => {
     if (index === this.state.inputs.length - 1) return;
-    this.setState((prevState) => {
+    this.setState((prevState: any) => {
       const newInputs = [...prevState.inputs];
       [newInputs[index], newInputs[index + 1]] = [
         newInputs[index + 1],
@@ -46,7 +45,7 @@ class ItemLoreComponent extends React.Component {
   };
 
   handleChange = (index: number, value: string) => {
-    this.setState((prevState) => {
+    this.setState((prevState: any) => {
       const newInputs = [...prevState.inputs];
       newInputs[index] = value;
       return { inputs: newInputs };
@@ -63,7 +62,7 @@ class ItemLoreComponent extends React.Component {
     return (
       "\tlore:\n" +
       this.state.inputs
-        .map((loreLine) => {
+        .map((loreLine: string) => {
           return loreLine ? `\t- '${loreLine}'` : "\t- ''"; // Check if the loreLine is empty
         })
         .join("\n")
@@ -73,7 +72,7 @@ class ItemLoreComponent extends React.Component {
   render() {
     return (
       <div className="lore">
-        {this.state.inputs.map((input, index: number) => (
+        {this.state.inputs.map((input: any, index: number) => (
           <div key={index}>
             <input
               type="text"

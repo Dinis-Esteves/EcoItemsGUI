@@ -1,6 +1,5 @@
 import React from "react";
 import ItemDropDownMenu from "./Dropdowns/ItemDropDownMenu";
-import Manager from "./Manager";
 
 class ItemRecipe extends React.Component {
   private slots: Array<JSX.Element> = [];

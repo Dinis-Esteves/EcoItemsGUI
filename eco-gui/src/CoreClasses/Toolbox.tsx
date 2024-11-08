@@ -13,9 +13,9 @@ class Toolbox {
       .then((csvText) => {
         Papa.parse(csvText, {
           header: true,
-          complete: (results) => {
+          complete: (results: any) => {
             const map = new Map<string, string>();
-            results.data.forEach((row) => {
+            results.data.forEach((row: any) => {
               if (row.Name && row.Id) {
                 map.set(row.Id, row.Name);
               }

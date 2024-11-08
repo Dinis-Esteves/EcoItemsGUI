@@ -1,8 +1,10 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import Manager from "./Manager";
 
+// Define the expected structure of `component` prop
+
 interface AddButtonProps {
-  component: React.ReactNode;
+  component: ReactNode; // Use the custom ComponentType here
   onClick?: () => void; // Optional onClick prop
 }
 
@@ -20,7 +22,13 @@ class AddButton extends React.Component<AddButtonProps> {
 
   render(): JSX.Element {
     const { onClick } = this.props;
-    const componentType = this.props.component?.type?.name || "Component";
+
+    // Check if `this.props.component` is a valid React element
+    const componentType = React.isValidElement(this.props.component) && 
+      typeof this.props.component.type === "function" ? 
+      this.props.component.type.name : 
+      "Component";
+
     const buttonLabel = `Add ${componentType.replace("DropDownMenu", "")}`;
 
     return (

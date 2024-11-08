@@ -41,11 +41,11 @@ class EffectDropDownMenu extends AbstractDropDownMenu {
 
   // Function to generate Arg components from JSON data
   generateArgsComponents(effectName: string) {
-    const args = effectsArgs[effectName]; // Get the args based on the effect name
+    const args = effectsArgs[effectName as keyof typeof effectsArgs] || {}; // Returns an empty object if undefined
     if (!args)
       return { argComponents: [], newArgRefs: [], hasEffectArgs: false }; // Return an empty array if no args found
 
-    const newArgRefs = []; // Array to hold refs for the newly created Arg components
+    const newArgRefs: any = []; // Array to hold refs for the newly created Arg components
     let hasEffectArgs = false; // Flag to track if there are effect-type arguments
 
     const argComponents = Object.entries(args).map(([key, type], index) => {
@@ -59,15 +59,15 @@ class EffectDropDownMenu extends AbstractDropDownMenu {
           return <Arg key={index} ref={ref} type="text" label={key} />;
         case "float":
           return (
-            <Arg key={index} ref={ref} type="number" label={key} step="0.1" />
+            <Arg key={index} ref={ref} type="number" label={key} />
           );
         case "boolean":
           return <Arg key={index} ref={ref} type="checkbox" label={key} />;
         case "effect":
           hasEffectArgs = true; // Set flag if there's an effect argument
-          return <EffectDropDownMenu key={index} ref={ref} />;
+          return <EffectDropDownMenu key={index} />;
         case "shape":
-          return <ShapeDropDownMenu key={index} ref={ref} />;
+          return <ShapeDropDownMenu key={index} />;
         default:
           return null; // Handle unknown types
       }
@@ -76,7 +76,7 @@ class EffectDropDownMenu extends AbstractDropDownMenu {
     return { argComponents, newArgRefs, hasEffectArgs }; // Return components and updated refs
   }
 
-  addComponentToArgs = (ComponentType) => {
+  addComponentToArgs = (ComponentType: any) => {
     const newComponentRef = React.createRef(); // Create a new ref for the new component
 
     // Create an instance of the component and pass the ref to it
@@ -84,7 +84,7 @@ class EffectDropDownMenu extends AbstractDropDownMenu {
       <ComponentType key={this.state.Args.length} ref={newComponentRef} />
     );
 
-    this.setState((prevState) => ({
+    this.setState((prevState: any) => ({
       Args: [...prevState.Args, newComponent],
       argRefs: [...prevState.argRefs, newComponentRef],
     }));
@@ -106,14 +106,14 @@ class EffectDropDownMenu extends AbstractDropDownMenu {
 
     // Initialize categorized arrays for different component types
     let effectsYAML = [];
-    let conditionsYAML = [];
-    let mutatorsYAML = [];
-    let filtersYAML = [];
-    let miscellaneousYAML = [];
+    let conditionsYAML: string[] = [];
+    let mutatorsYAML: string[] = [];
+    let filtersYAML: string[] = [];
+    let miscellaneousYAML: string[] = [];
 
     // Generate YAML for arguments and categorize components
     const argsYML = this.state.argRefs
-      .map((ref) => {
+      .map((ref: any) => {
         if (ref.current) {
           const yamlString = ref.current.toYML(ident); // Generate YAML for each argument component
           if (yamlString.trim() !== "") {
@@ -144,7 +144,7 @@ class EffectDropDownMenu extends AbstractDropDownMenu {
       effectsYAML = [mainEffectYML]; // Ensure main effect is included if there are no nested effects
     }
     // Helper function to format each section, skipping empty sections
-    const formatSection = (header, content) =>
+    const formatSection = (header: string, content: string[]) =>
       content.length ? `${header}${content.join("\n")}` : "";
 
     // Generate the final YAML content, omitting empty sections
