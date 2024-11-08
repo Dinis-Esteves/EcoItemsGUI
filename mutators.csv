@@ -1,0 +1,17 @@
+Id,Name
+block_to_location,block_to_location
+dispatcher_as_player,dispatcher_as_player
+dispatcher_as_victim,dispatcher_as_victim
+location_to_block,location_to_block
+location_to_cursor,location_to_cursor
+location_to_drop,location_to_drop
+location_to_player,location_to_player
+location_to_projectile,location_to_projectile
+location_to_victim,location_to_victim
+player_as_victim,player_as_victim
+spin_location,spin_location
+spin_velocity,spin_velocity
+translate_location,translate_location
+victim_as_dispatcher,victim_as_dispatcher
+victim_as_player,victim_as_player
+victim_to_owner,victim_to_owner
